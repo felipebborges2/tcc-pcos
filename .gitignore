@@ -1,0 +1,28 @@
+# Dados de imagem (datasets grandes)
+data/
+
+# Modelos treinados
+outputs/models/
+
+# Ambiente virtual Python
+venv/
+pip-cache/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos temporários
+tmp/
+
+# Configuração local do IDE/ferramentas
+.claude/
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
