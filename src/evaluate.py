@@ -33,6 +33,7 @@ from model import build_resnet50
 # --- configuracao ---
 MODEL_PATH = Path("G:/tcc/outputs/models/best_model.pt")
 RESULTS_PATH = Path("G:/tcc/outputs/logs/evaluation_results.csv")
+SCORES_DIR = Path("G:/tcc/outputs/scores")  # score por imagem, um CSV por conjunto
 
 # datasets
 PCOSGEN_TEST_IMG_DIR = Path("G:/tcc/data/pcosgen/test/PCOSGen-test/images")
@@ -74,6 +75,9 @@ class CsvLabeledDataset(Dataset):
             image = self.transform(image)
         return image, label
 
+    def sample_id(self, idx):
+        return str(self.labels_df.iloc[idx]["imagePath"])
+
 
 class FolderDataset(Dataset):
     """Dataset com pastas por classe (caso do Kaggle e Figshare)."""
@@ -110,14 +114,22 @@ class FolderDataset(Dataset):
             image = self.transform(image)
         return image, label
 
+    def sample_id(self, idx):
+        # ultimos 3 niveis do caminho, ex.: train/infected/img_001.jpg
+        return "/".join(self.samples[idx][0].parts[-3:])
+
 
 # ============================================================
 # AVALIACAO
 # ============================================================
 
 @torch.no_grad()
-def evaluate_dataset(model, loader, device, dataset_name):
-    """Avalia modelo num dataset e retorna metricas."""
+def evaluate_dataset(model, loader, device, dataset_name, scores_path=None):
+    """Avalia modelo num dataset e retorna metricas.
+
+    Se scores_path for informado, salva o score de cada imagem nesse CSV
+    (requer loader sem shuffle, para manter a ordem do dataset).
+    """
     model.eval()
     all_logits = []
     all_preds = []
@@ -136,8 +148,17 @@ def evaluate_dataset(model, loader, device, dataset_name):
     all_logits = np.array(all_logits)
     all_preds = np.array(all_preds)
     all_labels = np.array(all_labels)
-    
-    auc = roc_auc_score(all_labels, all_logits)
+
+    if scores_path is not None:
+        ds = loader.dataset
+        pd.DataFrame({
+            "image": [ds.sample_id(i) for i in range(len(ds))],
+            "label": all_labels.astype(int),
+            "logit": all_logits,
+            "prob_pcos": 1 / (1 + np.exp(-all_logits)),
+        }).to_csv(scores_path, index=False)
+
+    auc =roc_auc_score(all_labels, all_logits)
     f1 = f1_score(all_labels, all_preds)
     acc = accuracy_score(all_labels, all_preds)
     
@@ -243,21 +264,25 @@ def main():
     
     # --- avalia em cada dataset ---
     results = []
-    
+    SCORES_DIR.mkdir(parents=True, exist_ok=True)
+
     print("\n>>> Carregando PCOSGen-test (validacao interna)...")
     ds = load_pcosgen_test(transform)
     loader = DataLoader(ds, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS, pin_memory=True)
-    results.append(evaluate_dataset(model, loader, device, "PCOSGen-test (interno)"))
+    results.append(evaluate_dataset(model, loader, device, "PCOSGen-test (interno)",
+                                   SCORES_DIR / "scores_pcosgen_test.csv"))
     
     print("\n>>> Carregando Kaggle (validacao externa 1)...")
     ds = load_kaggle(transform)
     loader = DataLoader(ds, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS, pin_memory=True)
-    results.append(evaluate_dataset(model, loader, device, "Kaggle (externo 1)"))
+    results.append(evaluate_dataset(model, loader, device, "Kaggle (externo 1)",
+                                   SCORES_DIR / "scores_kaggle.csv"))
     
     print("\n>>> Carregando Figshare (validacao externa 2)...")
     ds = load_figshare(transform)
     loader = DataLoader(ds, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS, pin_memory=True)
-    results.append(evaluate_dataset(model, loader, device, "Figshare (externo 2)"))
+    results.append(evaluate_dataset(model, loader, device, "Figshare (externo 2)",
+                                   SCORES_DIR / "scores_figshare.csv"))
     
     # --- salva CSV ---
     with open(RESULTS_PATH, "w", newline="") as f:
