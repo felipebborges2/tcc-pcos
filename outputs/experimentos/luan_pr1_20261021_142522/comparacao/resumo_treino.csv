@@ -1,0 +1,3 @@
+experimento,epocas_executadas,melhor_epoca,fonte_melhor_epoca,val_auc,val_f1,val_acc,val_loss,train_loss,lr_na_epoca,log
+Antes (referência),23,8,checkpoint,0.8346633926744425,0.7468030690537084,0.690625,0.2643597103655338,0.2489156171679497,0.0001,G:\tcc\outputs\logs\train_log.csv
+Depois (PR #1),24,9,checkpoint,0.8251062241962468,0.7244094488188977,0.671875,0.2658399276435375,0.2633693866431713,0.0001,G:\tcc\outputs\experimentos\luan_pr1_20261021_142522\logs\train_log.csv

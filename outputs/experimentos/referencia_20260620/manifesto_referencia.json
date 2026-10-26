@@ -1,0 +1,95 @@
+{
+  "experimento": "referencia (artigo ERAMIA-RS 2026, train.py versao 3)",
+  "observacao": "Arquivos NAO copiados nem movidos; ficam nos caminhos originais. Este manifesto so' registra quais sao e seus hashes.",
+  "codigo": "src/train.py e src/transforms_config.py no commit fbe476d (iguais a dffd95c)",
+  "config": {
+    "seed": "42 (torch.manual_seed e np.random.seed; sem cuDNN deterministico)",
+    "split": "80/20 estratificado, random_state=42 (2560/640)",
+    "modelo": "ResNet-50 ImageNet IMAGENET1K_V2, fc=Dropout(0.5)+Linear(2048,1), fine-tuning completo desde a epoca 1",
+    "otimizador": "Adam lr=1e-4, weight_decay=1e-3",
+    "scheduler": "ReduceLROnPlateau(max val_auc, factor 0.5, patience 5, min_lr 1e-6)",
+    "loss": "BCEWithLogitsLoss(pos_weight = n_normal/n_pcos do treino)",
+    "batch_size": 32,
+    "epocas_max": 50,
+    "early_stopping": 15,
+    "augmentation_treino": "Resize(224), RandomHorizontalFlip(0.5), RandomRotation(10)",
+    "eval": "Resize(224), ToTensor, Normalize(ImageNet)",
+    "limiar": "prob_pcos > 0.5",
+    "classe_positiva": "PCOS (1)"
+  },
+  "treino": {
+    "epocas_executadas": 23,
+    "melhor_epoca": 8,
+    "val_auc": 0.8346633926744425,
+    "val_f1": 0.7468030690537084
+  },
+  "avaliacao": "evaluation_results.csv e scores/ gerados em 2026-10-07 pelo evaluate.py do commit fbe476d sobre este checkpoint; os scores reproduzem exatamente as matrizes e AUCs do CSV (conferido por comparar_experimentos.py)",
+  "arquivos": [
+    {
+      "arquivo": "outputs/models/best_model.pt",
+      "bytes": 94359441,
+      "modificado": "2026-06-20T09:06:00",
+      "sha256": "d9839653a436ec4cd73e08ee853123547484b3f95c4a1ec90af92e97effc3614"
+    },
+    {
+      "arquivo": "outputs/logs/train_log.csv",
+      "bytes": 3804,
+      "modificado": "2026-06-20T09:19:14",
+      "sha256": "f286f74bdbe2373007c09870a7d89d2c3da0b5a6bb58b909644b35f1c452bb37"
+    },
+    {
+      "arquivo": "outputs/logs/evaluation_results.csv",
+      "bytes": 534,
+      "modificado": "2026-10-07T18:04:42",
+      "sha256": "331ac12bb70cc95b423376c89a32ef62718d3b688ddcf31dad4e097b714638c7"
+    },
+    {
+      "arquivo": "outputs/scores/scores_pcosgen_test.csv",
+      "bytes": 56982,
+      "modificado": "2026-10-07T18:03:02",
+      "sha256": "5e9eeb572dc825126d1ae66de0a5f6aad78ca1ed9fb6291f7db937fa85979916"
+    },
+    {
+      "arquivo": "outputs/scores/scores_kaggle.csv",
+      "bytes": 212943,
+      "modificado": "2026-10-07T18:03:21",
+      "sha256": "cadaa6c362e7b66d4b37c4d4fc2cc1b5db2ec9ad3b17cb0a10d14e0564c507fc"
+    },
+    {
+      "arquivo": "outputs/scores/scores_figshare.csv",
+      "bytes": 685242,
+      "modificado": "2026-10-07T18:04:42",
+      "sha256": "47cc76efa415f1d2a9bc1a311c7f8f8b5ac60a256ef70c00f16a04374610a386"
+    },
+    {
+      "arquivo": "resultados/splits/pcosgen_train_treino.csv",
+      "bytes": 43826,
+      "modificado": "2026-10-07T18:08:10",
+      "sha256": "fb1dc9e305674c7f7e5cecd467eb5843a04fc841c0be0b071a60f50ff1e5c0fa"
+    },
+    {
+      "arquivo": "resultados/splits/pcosgen_train_validacao.csv",
+      "bytes": 10965,
+      "modificado": "2026-10-07T18:08:10",
+      "sha256": "633128b27cbbf9b7bce0f00d1b46c742e46a2ae4907ac7d8f92cfd2b624a383f"
+    },
+    {
+      "arquivo": "resultados/curvas_roc.png",
+      "bytes": 148173,
+      "modificado": "2026-10-07T18:07:08",
+      "sha256": "74a1756256cf641652d5237ba617267deacc4ac35ac6e9f5d7f377c02ef39e6d"
+    },
+    {
+      "arquivo": "resultados/matrizes_confusao.png",
+      "bytes": 226239,
+      "modificado": "2026-10-07T17:54:58",
+      "sha256": "a6a13313287d6b5bbe77f2c6a88a8613e228c1ce6abc6b7b84c12c154ee0d85b"
+    },
+    {
+      "arquivo": "resultados/comparacao_metricas.png",
+      "bytes": 105469,
+      "modificado": "2026-10-07T17:54:58",
+      "sha256": "af78e6f5aa84d1637f5d376ffe5db7cf7603983c095d275e39bcb6b3a6527004"
+    }
+  ]
+}

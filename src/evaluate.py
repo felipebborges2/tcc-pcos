@@ -11,10 +11,25 @@ Calcula metricas:
 - AUC-ROC, F1, acuracia, sensibilidade, especificidade
 - Matriz de confusao
 
-Salva resultados em outputs/logs/evaluation_results.csv
+Uso (os dois argumentos sao obrigatorios, para nunca sobrescrever os
+resultados do experimento de referencia em outputs/logs/ e outputs/scores/):
+
+    python src/evaluate.py --checkpoint <best_model.pt> --out-dir <pasta>
+
+Salva em <pasta>:
+- evaluation_results.csv: metricas por conjunto (mesmas colunas de antes + precisao)
+- scores/scores_<conjunto>.csv: uma linha por imagem com image, label
+  (0 = normal, 1 = PCOS), logit, prob_pcos e pred_label (prob_pcos > 0.5)
+- arquivos_ilegiveis.csv: arquivos que o PIL nao abre e que sao avaliados como
+  imagem preta (mesmo tratamento usado nos resultados de referencia)
+- avaliacao_info.json: checkpoint usado (caminho, SHA-256, epoca, val_auc)
 """
 
+import argparse
 import csv
+import hashlib
+import json
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -31,9 +46,8 @@ from transforms_config import get_eval_transform
 from model import build_resnet50
 
 # --- configuracao ---
-MODEL_PATH = Path("G:/tcc/outputs/models/best_model.pt")
-RESULTS_PATH = Path("G:/tcc/outputs/logs/evaluation_results.csv")
-SCORES_DIR = Path("G:/tcc/outputs/scores")  # score por imagem, um CSV por conjunto
+# pastas do experimento de referencia: evaluate.py nao grava nelas
+REFERENCE_DIRS = [Path("G:/tcc/outputs/logs"), Path("G:/tcc/outputs/scores"), Path("G:/tcc/outputs")]
 
 # datasets
 PCOSGEN_TEST_IMG_DIR = Path("G:/tcc/data/pcosgen/test/PCOSGen-test/images")
@@ -46,6 +60,7 @@ FIGSHARE_DIR = Path("G:/tcc/data/figshare/PCOS")
 BATCH_SIZE = 32
 NUM_WORKERS = 4
 SEED = 42
+THRESHOLD = 0.5  # fixo; o mesmo dos resultados de referencia
 
 torch.manual_seed(SEED)
 np.random.seed(SEED)
@@ -118,6 +133,17 @@ class FolderDataset(Dataset):
         # ultimos 3 niveis do caminho, ex.: train/infected/img_001.jpg
         return "/".join(self.samples[idx][0].parts[-3:])
 
+    def unreadable_files(self):
+        """Arquivos que caem no except de __getitem__ (avaliados como imagem preta)."""
+        bad = []
+        for i, (img_path, label) in enumerate(self.samples):
+            try:
+                Image.open(img_path).convert("RGB")
+            except Exception as e:
+                bad.append({"image": self.sample_id(i), "label": label,
+                            "bytes": img_path.stat().st_size, "erro": type(e).__name__})
+        return bad
+
 
 # ============================================================
 # AVALIACAO
@@ -139,7 +165,7 @@ def evaluate_dataset(model, loader, device, dataset_name, scores_path=None):
         images = images.to(device)
         logits = model(images).squeeze(1)
         probs = torch.sigmoid(logits)
-        preds = (probs > 0.5).long()
+        preds = (probs > THRESHOLD).long()
         
         all_logits.extend(logits.cpu().numpy())
         all_preds.extend(preds.cpu().numpy())
@@ -156,6 +182,7 @@ def evaluate_dataset(model, loader, device, dataset_name, scores_path=None):
             "label": all_labels.astype(int),
             "logit": all_logits,
             "prob_pcos": 1 / (1 + np.exp(-all_logits)),
+            "pred_label": all_preds.astype(int),
         }).to_csv(scores_path, index=False)
 
     auc =roc_auc_score(all_labels, all_logits)
@@ -166,6 +193,7 @@ def evaluate_dataset(model, loader, device, dataset_name, scores_path=None):
     tn, fp, fn, tp = cm.ravel()
     sensitivity = tp / (tp + fn) if (tp + fn) > 0 else 0.0  # PCOS detectado
     specificity = tn / (tn + fp) if (tn + fp) > 0 else 0.0  # normal detectado
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0  # valor preditivo positivo
     
     print(f"\n{'=' * 60}")
     print(f"  {dataset_name}")
@@ -176,6 +204,7 @@ def evaluate_dataset(model, loader, device, dataset_name, scores_path=None):
     print(f"AUC-ROC      : {auc:.4f}")
     print(f"F1-score     : {f1:.4f}")
     print(f"Acuracia     : {acc:.4f}")
+    print(f"Precisao     : {precision:.4f}")
     print(f"Sensibilidade: {sensitivity:.4f} (recall PCOS)")
     print(f"Especificidade: {specificity:.4f} (recall normal)")
     print(f"Matriz de confusao:")
@@ -191,12 +220,14 @@ def evaluate_dataset(model, loader, device, dataset_name, scores_path=None):
         "auc_roc": auc,
         "f1_score": f1,
         "accuracy": acc,
+        "precision": precision,
         "sensitivity": sensitivity,
         "specificity": specificity,
         "tn": int(tn),
         "fp": int(fp),
         "fn": int(fn),
         "tp": int(tp),
+        "threshold": THRESHOLD,
     }
 
 
@@ -246,7 +277,32 @@ def load_figshare(transform):
 # MAIN
 # ============================================================
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Avalia um checkpoint no PCOSGen-test, Kaggle e Figshare.")
+    parser.add_argument("--checkpoint", type=Path, required=True, help="arquivo best_model.pt")
+    parser.add_argument("--out-dir", type=Path, required=True, help="pasta nova para os resultados")
+    return parser.parse_args()
+
+
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 def main():
+    args = parse_args()
+    MODEL_PATH = args.checkpoint.resolve()
+    out_dir = args.out_dir.resolve()
+    if out_dir in {d.resolve() for d in REFERENCE_DIRS}:
+        raise SystemExit(f"{out_dir} guarda resultados do experimento de referencia; use outra pasta.")
+    RESULTS_PATH = out_dir / "evaluation_results.csv"
+    SCORES_DIR = out_dir / "scores"
+    if RESULTS_PATH.exists() or SCORES_DIR.exists():
+        raise SystemExit(f"{out_dir} ja tem resultados de avaliacao; escolha outra pasta.")
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
     
@@ -254,6 +310,18 @@ def main():
     print(f"\nCarregando modelo de: {MODEL_PATH}")
     checkpoint = torch.load(MODEL_PATH, map_location=device, weights_only=False)
     print(f"Modelo treinado na epoca {checkpoint['epoch']}, val_auc={checkpoint['val_auc']:.4f}")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    info = {
+        "data_avaliacao": datetime.now().isoformat(timespec="seconds"),
+        "checkpoint": str(MODEL_PATH),
+        "checkpoint_sha256": sha256(MODEL_PATH),
+        "checkpoint_epoch": checkpoint["epoch"],
+        "checkpoint_val_auc": checkpoint["val_auc"],
+        "threshold": THRESHOLD,
+        "classes": {"0": "normal", "1": "PCOS (classe positiva)"},
+        "eval_transform": repr(get_eval_transform()),
+        "device": str(device),
+    }
     
     model = build_resnet50(pretrained=False, freeze_backbone=False).to(device)
     model.load_state_dict(checkpoint["model_state_dict"])
@@ -274,12 +342,14 @@ def main():
     
     print("\n>>> Carregando Kaggle (validacao externa 1)...")
     ds = load_kaggle(transform)
+    unreadable = [dict(conjunto="Kaggle", **r) for r in ds.unreadable_files()]
     loader = DataLoader(ds, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS, pin_memory=True)
     results.append(evaluate_dataset(model, loader, device, "Kaggle (externo 1)",
                                    SCORES_DIR / "scores_kaggle.csv"))
     
     print("\n>>> Carregando Figshare (validacao externa 2)...")
     ds = load_figshare(transform)
+    unreadable += [dict(conjunto="Figshare", **r) for r in ds.unreadable_files()]
     loader = DataLoader(ds, batch_size=BATCH_SIZE, num_workers=NUM_WORKERS, pin_memory=True)
     results.append(evaluate_dataset(model, loader, device, "Figshare (externo 2)",
                                    SCORES_DIR / "scores_figshare.csv"))
@@ -289,6 +359,14 @@ def main():
         writer = csv.DictWriter(f, fieldnames=results[0].keys())
         writer.writeheader()
         writer.writerows(results)
+
+    pd.DataFrame(unreadable, columns=["conjunto", "image", "label", "bytes", "erro"]).to_csv(
+        out_dir / "arquivos_ilegiveis.csv", index=False)
+    info["n_imagens"] = {r["dataset"]: r["n_samples"] for r in results}
+    info["n_ilegiveis_imagem_preta"] = len(unreadable)
+    with open(out_dir / "avaliacao_info.json", "w", encoding="utf-8") as f:
+        json.dump(info, f, indent=2, ensure_ascii=False)
+    print(f"\nArquivos ilegiveis (avaliados como imagem preta): {len(unreadable)}")
     
     # --- resumo final ---
     print(f"\n{'=' * 60}")

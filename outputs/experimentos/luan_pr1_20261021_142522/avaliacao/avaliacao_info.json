@@ -1,0 +1,20 @@
+{
+  "data_avaliacao": "2026-10-21T14:48:42",
+  "checkpoint": "G:\\tcc\\outputs\\experimentos\\luan_pr1_20261021_142522\\models\\best_model.pt",
+  "checkpoint_sha256": "83d279312554a7961da67c06b5a6d5d4d7e64282f8cd220da47a11145e163e93",
+  "checkpoint_epoch": 9,
+  "checkpoint_val_auc": 0.8251062241962468,
+  "threshold": 0.5,
+  "classes": {
+    "0": "normal",
+    "1": "PCOS (classe positiva)"
+  },
+  "eval_transform": "Compose(\n    Resize(size=(224, 224), interpolation=bilinear, max_size=None, antialias=True)\n    ToTensor()\n    Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n)",
+  "device": "cuda",
+  "n_imagens": {
+    "PCOSGen-test (interno)": 1468,
+    "Kaggle (externo 1)": 3856,
+    "Figshare (externo 2)": 11784
+  },
+  "n_ilegiveis_imagem_preta": 10
+}

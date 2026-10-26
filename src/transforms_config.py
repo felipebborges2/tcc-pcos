@@ -7,6 +7,11 @@ Val/Test: redimensionamento + normalizacao (sem augmentation)
 
 Versao 2: removido ColorJitter (ultrassom e' monocromatico, jitter de cor
 adiciona ruido sem ganho semantico). Mantido flip horizontal e rotacao leve.
+Usada no experimento de referencia (outputs/models/best_model.pt).
+
+Versao 3 (PR #1 do Luan): ColorJitter leve e RandomAffine (so' translacao de
+ate 5%) no treino. As transformacoes sao aplicadas em memoria a cada epoca;
+os arquivos de imagem nao sao alterados. O transform de avaliacao nao mudou.
 """
 
 from torchvision import transforms

@@ -1,0 +1,72 @@
+﻿Device: cuda
+
+Carregando modelo de: G:\tcc\outputs\experimentos\luan_pr1_20261021_142522\models\best_model.pt
+Modelo treinado na epoca 9, val_auc=0.8251
+
+>>> Carregando PCOSGen-test (validacao interna)...
+
+============================================================
+  PCOSGen-test (interno)
+============================================================
+Amostras: 1468 (normal=417, PCOS=1051)
+AUC-ROC      : 0.9572
+F1-score     : 0.9350
+Acuracia     : 0.9067
+Precisao     : 0.9328
+Sensibilidade: 0.9372 (recall PCOS)
+Especificidade: 0.8297 (recall normal)
+Matriz de confusao:
+               Predito 0   Predito 1
+  Real 0 (N)      346          71
+  Real 1 (P)       66         985
+
+>>> Carregando Kaggle (validacao externa 1)...
+
+============================================================
+  Kaggle (externo 1)
+============================================================
+Amostras: 3856 (normal=2288, PCOS=1568)
+AUC-ROC      : 0.7263
+F1-score     : 0.5834
+Acuracia     : 0.5615
+Precisao     : 0.4753
+Sensibilidade: 0.7551 (recall PCOS)
+Especificidade: 0.4288 (recall normal)
+Matriz de confusao:
+               Predito 0   Predito 1
+  Real 0 (N)      981        1307
+  Real 1 (P)      384        1184
+
+>>> Carregando Figshare (validacao externa 2)...
+
+============================================================
+  Figshare (externo 2)
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.6781
+F1-score     : 0.6810
+Acuracia     : 0.6166
+Precisao     : 0.6536
+Sensibilidade: 0.7108 (recall PCOS)
+Especificidade: 0.4888 (recall normal)
+Matriz de confusao:
+               Predito 0   Predito 1
+  Real 0 (N)     2444        2556
+  Real 1 (P)     1962        4822
+
+Arquivos ilegiveis (avaliados como imagem preta): 10
+
+============================================================
+RESUMO COMPARATIVO
+============================================================
+Dataset                             AUC       F1      Acc
+------------------------------------------------------------
+PCOSGen-test (interno)           0.9572   0.9350   0.9067
+Kaggle (externo 1)               0.7263   0.5834   0.5615
+Figshare (externo 2)             0.6781   0.6810   0.6166
+
+Generalization gap:
+  Kaggle (externo 1): queda de 0.2309 pontos de AUC (23.1%)
+  Figshare (externo 2): queda de 0.2791 pontos de AUC (27.9%)
+
+Resultados salvos em: G:\tcc\outputs\experimentos\luan_pr1_20261021_142522\avaliacao\evaluation_results.csv

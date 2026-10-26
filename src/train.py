@@ -3,21 +3,39 @@ train.py
 Treinamento centralizado da ResNet-50 no PCOSGen-train.
 Experimento 1 da metodologia: treino + validacao interna.
 
-Salva:
-- Melhor modelo em outputs/models/best_model.pt
-- Log por epoca em outputs/logs/train_log.csv
+Salva numa pasta propria do experimento (--out-dir; padrao
+outputs/experimentos/luan_pr1_AAAAMMDD_HHMMSS, com a hora do inicio):
+- Melhor modelo em <out-dir>/models/best_model.pt
+- Log por epoca em <out-dir>/logs/train_log.csv
+- Configuracao em <out-dir>/config.json
+- Particao treino/validacao em <out-dir>/splits/ (conferida contra
+  resultados/splits/, que e' a do experimento de referencia)
 
-Versao 3:
+Nunca grava em outputs/models/ nem outputs/logs/: la ficam o checkpoint e o
+log do experimento de referencia (versao 3 abaixo, treinado em 2026-06-20).
+
+Versao 3 (experimento de referencia):
 - lr=1e-4 (mantido da v2)
 - ReduceLROnPlateau scheduler (mantido da v2)
 - weight_decay aumentado para 1e-3 (mais regularizacao)
 - Dropout(0.5) na camada final do modelo
 - augmentation simplificada (sem ColorJitter)
+
+Versao 4 (PR #1 do Luan):
+- treino em duas fases: 3 epocas so' com a cabeca (backbone congelado,
+  lr=1e-3), depois fine-tuning completo com lr=1e-4 e otimizador/scheduler novos
+- seeds de random/numpy/torch/cuda e cuDNN deterministico
+- checkpoint tambem guarda otimizador, scheduler, lr e seed
+- augmentation com ColorJitter leve e RandomAffine (ver transforms_config.py)
 """
 
+import argparse
+import json
+import subprocess
 import time
 import csv
 import random
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -39,8 +57,9 @@ from model import build_resnet50
 LABELS_PATH = Path("G:/tcc/data/pcosgen/train/PCOSGen-train/PCOSGen-train/class_label.xlsx")
 IMG_DIR = Path("G:/tcc/data/pcosgen/train/PCOSGen-train/PCOSGen-train/images")
 OUTPUT_DIR = Path("G:/tcc/outputs")
-MODEL_PATH = OUTPUT_DIR / "models" / "best_model.pt"
-LOG_PATH = OUTPUT_DIR / "logs" / "train_log.csv"
+EXPERIMENTS_DIR = OUTPUT_DIR / "experimentos"
+# particao usada pelo experimento de referencia (exportada por exportar_splits.py)
+REFERENCE_SPLITS_DIR = Path("G:/tcc/resultados/splits")
 
 # hiperparametros
 SEED = 42
@@ -124,7 +143,56 @@ def evaluate(model, loader, criterion, device):
     return avg_loss, acc, auc, f1
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description=__doc__.split("\n")[2])
+    parser.add_argument(
+        "--out-dir", type=Path, default=None,
+        help="pasta do experimento (padrao: outputs/experimentos/luan_pr1_<data_hora>)",
+    )
+    return parser.parse_args()
+
+
+def git_commit():
+    try:
+        return subprocess.run(
+            ["git", "-C", str(Path(__file__).resolve().parent), "rev-parse", "HEAD"],
+            capture_output=True, text=True, check=True,
+        ).stdout.strip()
+    except Exception:
+        return None
+
+
+def check_same_split(train_df, val_df):
+    """Confere se a particao e' identica a do experimento de referencia."""
+    import pandas as pd
+    for name, part in [("treino", train_df), ("validacao", val_df)]:
+        ref = pd.read_csv(REFERENCE_SPLITS_DIR / f"pcosgen_train_{name}.csv")
+        same = (
+            len(ref) == len(part)
+            and (ref["imagePath"].astype(str).values == part["imagePath"].astype(str).values).all()
+            and (ref["label"].values == part["label"].values).all()
+        )
+        if not same:
+            raise SystemExit(
+                f"Particao de {name} difere de {REFERENCE_SPLITS_DIR}. "
+                "Abortando para nao comparar experimentos com dados diferentes."
+            )
+    print(f"Particao identica a do experimento de referencia ({REFERENCE_SPLITS_DIR})")
+
+
 def main():
+    args = parse_args()
+    started = datetime.now()
+    exp_dir = args.out_dir or EXPERIMENTS_DIR / f"luan_pr1_{started:%Y%m%d_%H%M%S}"
+    exp_dir = exp_dir.resolve()
+    if exp_dir in {OUTPUT_DIR.resolve(), (OUTPUT_DIR / "models").resolve(), (OUTPUT_DIR / "logs").resolve()}:
+        raise SystemExit(f"{exp_dir} guarda o experimento de referencia; use outra pasta.")
+    MODEL_PATH = exp_dir / "models" / "best_model.pt"
+    LOG_PATH = exp_dir / "logs" / "train_log.csv"
+    if MODEL_PATH.exists() or LOG_PATH.exists():
+        raise SystemExit(f"{exp_dir} ja tem checkpoint ou log; escolha outra pasta.")
+    print(f"Pasta do experimento: {exp_dir}")
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
     if device.type == "cuda":
@@ -140,6 +208,38 @@ def main():
     print(f"Treino: {len(train_df)} | Validacao: {len(val_df)}")
     print(f"Distribuicao treino : {train_df['label'].value_counts().to_dict()}")
     print(f"Distribuicao validac: {val_df['label'].value_counts().to_dict()}")
+    check_same_split(train_df, val_df)
+    (exp_dir / "splits").mkdir(exist_ok=True)
+    train_df.to_csv(exp_dir / "splits" / "pcosgen_train_treino.csv", index=False)
+    val_df.to_csv(exp_dir / "splits" / "pcosgen_train_validacao.csv", index=False)
+
+    config = {
+        "experimento": exp_dir.name,
+        "inicio": started.isoformat(timespec="seconds"),
+        "origem": "PR #1 (Luan), commit 9cb9922: fix: train parameters and logging",
+        "git_commit_base": git_commit(),
+        "labels_path": str(LABELS_PATH),
+        "img_dir": str(IMG_DIR),
+        "seed": SEED,
+        "batch_size": BATCH_SIZE,
+        "num_epochs_max": NUM_EPOCHS,
+        "head_only_epochs": HEAD_ONLY_EPOCHS,
+        "head_lr": HEAD_LR,
+        "fine_tune_lr": FINE_TUNE_LR,
+        "weight_decay": WEIGHT_DECAY,
+        "early_stopping_patience": EARLY_STOPPING_PATIENCE,
+        "scheduler": "ReduceLROnPlateau(mode=max sobre val_auc, factor=0.5, patience=5, min_lr=1e-6)",
+        "criterio_melhor_checkpoint": "maior val_auc (estritamente maior)",
+        "limiar": 0.5,
+        "train_transform": repr(get_train_transform()),
+        "eval_transform": repr(get_eval_transform()),
+        "device": str(device),
+        "torch": torch.__version__,
+        "model_path": str(MODEL_PATH),
+        "log_path": str(LOG_PATH),
+    }
+    with open(exp_dir / "config.json", "w", encoding="utf-8") as f:
+        json.dump(config, f, indent=2, ensure_ascii=False)
 
     # --- 2. class weights ---
     classes = np.array([0, 1])
@@ -276,6 +376,13 @@ def main():
         writer = csv.DictWriter(f, fieldnames=log_rows[0].keys())
         writer.writeheader()
         writer.writerows(log_rows)
+
+    config["fim"] = datetime.now().isoformat(timespec="seconds")
+    config["epocas_executadas"] = len(log_rows)
+    config["melhor_epoca"] = torch.load(MODEL_PATH, map_location="cpu", weights_only=False)["epoch"]
+    config["melhor_val_auc"] = best_val_auc
+    with open(exp_dir / "config.json", "w", encoding="utf-8") as f:
+        json.dump(config, f, indent=2, ensure_ascii=False)
 
     print(f"\nTreinamento concluido.")
     print(f"Melhor AUC de validacao: {best_val_auc:.4f}")

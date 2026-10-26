@@ -3,6 +3,7 @@ data/
 
 # Modelos treinados
 outputs/models/
+outputs/experimentos/*/models/
 
 # Ambiente virtual Python
 venv/
@@ -18,7 +19,6 @@ __pycache__/
 tmp/
 
 # Configuração local do IDE/ferramentas
-.claude/
 .vscode/
 .idea/
 

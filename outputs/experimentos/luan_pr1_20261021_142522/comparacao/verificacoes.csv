@@ -1,0 +1,26 @@
+verificacao,ok,detalhe
+antes/PCOSGen-test: matriz e AUC recalculadas dos scores = evaluation_results.csv,True,"(AUC csv=0.959925, recalculada=0.959925)"
+antes/Kaggle: matriz e AUC recalculadas dos scores = evaluation_results.csv,True,"(AUC csv=0.716382, recalculada=0.716382)"
+antes/Figshare: matriz e AUC recalculadas dos scores = evaluation_results.csv,True,"(AUC csv=0.680230, recalculada=0.680230)"
+depois/PCOSGen-test: matriz e AUC recalculadas dos scores = evaluation_results.csv,True,"(AUC csv=0.957205, recalculada=0.957205)"
+"depois/PCOSGen-test: pred_label = (prob_pcos > 0,5)",True,(0 divergencias de arredondamento)
+depois/Kaggle: matriz e AUC recalculadas dos scores = evaluation_results.csv,True,"(AUC csv=0.726264, recalculada=0.726264)"
+"depois/Kaggle: pred_label = (prob_pcos > 0,5)",True,(0 divergencias de arredondamento)
+depois/Figshare: matriz e AUC recalculadas dos scores = evaluation_results.csv,True,"(AUC csv=0.678095, recalculada=0.678095)"
+"depois/Figshare: pred_label = (prob_pcos > 0,5)",True,(0 divergencias de arredondamento)
+"PCOSGen-test: mesmas imagens, ordem e rotulos antes/depois",True,"(n antes=1468, depois=1468)"
+"Kaggle: mesmas imagens, ordem e rotulos antes/depois",True,"(n antes=3856, depois=3856)"
+"Figshare: mesmas imagens, ordem e rotulos antes/depois",True,"(n antes=11784, depois=11784)"
+depois: transform de avaliacao = get_eval_transform() atual (inalterado pelo PR),True,
+depois: avaliacao usou o checkpoint do experimento,True,(G:\tcc\outputs\experimentos\luan_pr1_20261021_142522\models\best_model.pt)
+"depois: limiar 0,5",True,
+arquivos ilegiveis (imagem preta) registrados,True,"(10 no depois; o historico nao registrou a lista, mas usou o mesmo except)"
+split de treino identico ao da referencia,True,(n=2560)
+split de validacao identico ao da referencia,True,(n=640)
+reavaliacao antes: checkpoint = referencia,True,(sha256 d9839653a436...)
+arquivos ilegiveis iguais nas duas avaliacoes,True,(10)
+reavaliacao antes/PCOSGen-test: reproduz os scores historicos,True,"(max |dif. logit|=0.00e+00, predicoes diferentes=0, AUC hist.=0.959925, reav.=0.959925)"
+reavaliacao antes/Kaggle: reproduz os scores historicos,True,"(max |dif. logit|=0.00e+00, predicoes diferentes=0, AUC hist.=0.716382, reav.=0.716382)"
+reavaliacao antes/Figshare: reproduz os scores historicos,True,"(max |dif. logit|=0.00e+00, predicoes diferentes=0, AUC hist.=0.680230, reav.=0.680230)"
+antes: epoca do checkpoint = epoca de maior val_auc no log,True,(8 x 8)
+depois: epoca do checkpoint = epoca de maior val_auc no log,True,(9 x 9)
