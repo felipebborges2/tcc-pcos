@@ -21,6 +21,8 @@ def get_train_transform():
         transforms.Resize((INPUT_SIZE, INPUT_SIZE)),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomRotation(degrees=10),
+        transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.05, hue=0.02),
+        transforms.RandomAffine(degrees=0, translate=(0.05, 0.05)),
         transforms.ToTensor(),
         transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD),
     ])

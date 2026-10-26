@@ -17,6 +17,7 @@ Versao 3:
 
 import time
 import csv
+import random
 from pathlib import Path
 
 import numpy as np
@@ -45,14 +46,25 @@ LOG_PATH = OUTPUT_DIR / "logs" / "train_log.csv"
 SEED = 42
 BATCH_SIZE = 32
 NUM_EPOCHS = 50
-LEARNING_RATE = 1e-4
+HEAD_LR = 1e-3
+FINE_TUNE_LR = 1e-4
 WEIGHT_DECAY = 1e-3
 EARLY_STOPPING_PATIENCE = 15
+HEAD_ONLY_EPOCHS = 3
 NUM_WORKERS = 4
 
 # reprodutibilidade
-torch.manual_seed(SEED)
-np.random.seed(SEED)
+def set_seed(seed: int = SEED):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+
+
+set_seed(SEED)
 
 
 def train_one_epoch(model, loader, criterion, optimizer, device):
@@ -118,6 +130,9 @@ def main():
     if device.type == "cuda":
         print(f"GPU: {torch.cuda.get_device_name(0)}")
 
+    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+
     # --- 1. carregar rotulos e dividir treino/val ---
     print("\nCarregando rotulos...")
     df = load_pcosgen_train_labels(LABELS_PATH)
@@ -158,11 +173,11 @@ def main():
     print(f"\nBatches treino: {len(train_loader)} | Batches val: {len(val_loader)}")
 
     # --- 4. modelo, loss, otimizador, scheduler ---
-    model = build_resnet50(pretrained=True, freeze_backbone=False).to(device)
+    model = build_resnet50(pretrained=True, freeze_backbone=True).to(device)
     criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
     optimizer = torch.optim.Adam(
-        model.parameters(),
-        lr=LEARNING_RATE,
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=HEAD_LR,
         weight_decay=WEIGHT_DECAY,
     )
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
@@ -176,7 +191,8 @@ def main():
     # --- 5. loop de treinamento ---
     print(f"\nIniciando treinamento por ate {NUM_EPOCHS} epocas...")
     print(f"Early stopping com paciencia de {EARLY_STOPPING_PATIENCE} epocas")
-    print(f"Learning rate inicial: {LEARNING_RATE}")
+    print(f"Learning rate inicial: {HEAD_LR}")
+    print(f"Fine-tuning {HEAD_ONLY_EPOCHS + 1} com lr={FINE_TUNE_LR}")
     print(f"Weight decay: {WEIGHT_DECAY}\n")
 
     best_val_auc = 0.0
@@ -184,6 +200,22 @@ def main():
     log_rows = []
 
     for epoch in range(1, NUM_EPOCHS + 1):
+        if epoch == HEAD_ONLY_EPOCHS + 1:
+            for param in model.parameters():
+                param.requires_grad = True
+            optimizer = torch.optim.Adam(
+                filter(lambda p: p.requires_grad, model.parameters()),
+                lr=FINE_TUNE_LR,
+                weight_decay=WEIGHT_DECAY,
+            )
+            scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                optimizer,
+                mode="max",
+                factor=0.5,
+                patience=5,
+                min_lr=1e-6,
+            )
+
         t0 = time.time()
 
         train_loss, train_acc, train_auc, train_f1 = train_one_epoch(
@@ -225,8 +257,12 @@ def main():
             torch.save({
                 "epoch": epoch,
                 "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+                "scheduler_state_dict": scheduler.state_dict(),
                 "val_auc": val_auc,
                 "val_f1": val_f1,
+                "lr": current_lr,
+                "seed": SEED,
             }, MODEL_PATH)
             print(f"  -> melhor modelo salvo (AUC={val_auc:.4f})")
         else:
