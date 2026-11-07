@@ -44,6 +44,10 @@ def load_pcosgen_labels(labels_path):
     else:
         df = pd.read_excel(labels_path)
     df.columns = [c.strip() for c in df.columns]
+    if "Healthy" not in df.columns:
+        raise ValueError("Rotulos devem conter a coluna Healthy")
+    if not df["Healthy"].isin([0, 1]).all():
+        raise ValueError("Healthy deve conter apenas 0 ou 1, sem valores ausentes ou fracionarios")
     df["label"] = 1 - df["Healthy"].astype(int)
     return df[["imagePath", "label"]]
 
@@ -74,6 +78,55 @@ def split_train_val_grupos(df, groups, n_splits=5, fold=0, seed=42):
         df.iloc[train_idx].reset_index(drop=True),
         df.iloc[val_idx].reset_index(drop=True),
     )
+
+
+def validate_train_val_split(train_df, val_df, groups_df=None):
+    """Valida rotulos, IDs e ausencia de vazamento; retorna contagens por lado.
+
+    groups_df, quando fornecido, deve mapear imagePath unico para group_id
+    nao nulo e cobrir todas as imagens de treino e validacao.
+    """
+    counts = {}
+    images = {}
+    for side, df in [("train", train_df), ("val", val_df)]:
+        if not {"imagePath", "label"}.issubset(df.columns):
+            raise ValueError(f"{side}: colunas imagePath e label sao obrigatorias")
+        if not df["label"].isin([0, 1]).all() or set(df["label"]) != {0, 1}:
+            raise ValueError(f"{side}: label deve conter ambas as classes {{0, 1}}, sem valores invalidos")
+        if df["imagePath"].isna().any():
+            raise ValueError(f"{side}: imagePath nao pode conter valores nulos")
+        if df["imagePath"].duplicated().any():
+            raise ValueError(f"{side}: imagePath deve ser unico (imagens duplicadas)")
+        images[side] = set(df["imagePath"])
+        counts[f"{side}_images"] = len(df)
+        counts[f"{side}_label_counts"] = {label: int((df["label"] == label).sum()) for label in (0, 1)}
+
+    overlap = images["train"] & images["val"]
+    if overlap:
+        raise ValueError(f"Vazamento: {len(overlap)} imagePath compartilhados entre train e val")
+    counts["image_overlap"] = 0
+
+    if groups_df is not None:
+        if not {"imagePath", "group_id"}.issubset(groups_df.columns):
+            raise ValueError("groups_df: colunas imagePath e group_id sao obrigatorias")
+        if groups_df[["imagePath", "group_id"]].isna().any().any():
+            raise ValueError("groups_df: imagePath e group_id nao podem conter valores nulos")
+        if groups_df["imagePath"].duplicated().any():
+            raise ValueError("groups_df: imagePath deve ser unico (IDs duplicados)")
+        missing = (images["train"] | images["val"]) - set(groups_df["imagePath"])
+        if missing:
+            raise ValueError(f"groups_df: cobertura incompleta, faltam {len(missing)} imagePath")
+        group_ids = {
+            side: set(groups_df.loc[groups_df["imagePath"].isin(ids), "group_id"])
+            for side, ids in images.items()
+        }
+        overlap = group_ids["train"] & group_ids["val"]
+        if overlap:
+            raise ValueError(f"Vazamento: {len(overlap)} group_id compartilhados entre train e val")
+        counts["train_groups"] = len(group_ids["train"])
+        counts["val_groups"] = len(group_ids["val"])
+        counts["group_overlap"] = 0
+    return counts
 
 
 if __name__ == "__main__":

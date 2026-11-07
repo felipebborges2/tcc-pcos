@@ -21,6 +21,8 @@ permitir a ablacao passo a passo:
 - augment="pr1" (padrao): augmentation do PR #1.
 - augment="ultrassom": RandomResizedCrop, flip, RandomAffine, brilho/contraste,
   GaussianBlur, ruido speckle e RandomErasing (exige preproc="gray_pad").
+- augment="ultrassom_moderado": conservador, sem crop, blur ou erasing
+  (exige preproc="gray_pad").
 """
 
 import random
@@ -34,7 +36,7 @@ IMAGENET_STD = [0.229, 0.224, 0.225]
 INPUT_SIZE = 224
 
 PREPROCS = ("rgb_resize", "gray_pad")
-AUGMENTS = ("pr1", "ultrassom")
+AUGMENTS = ("pr1", "ultrassom", "ultrassom_moderado")
 
 
 class PadToSquare:
@@ -106,6 +108,17 @@ def get_train_transform(preproc="rgb_resize", augment="pr1"):
             transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD),
             transforms.RandomErasing(p=0.25, scale=(0.02, 0.1)),
         ])
+    if augment == "ultrassom_moderado":
+        if preproc != "gray_pad":
+            raise ValueError("augment='ultrassom_moderado' exige preproc='gray_pad'")
+        return transforms.Compose(_preproc_steps(preproc) + [
+            transforms.RandomHorizontalFlip(p=0.5),
+            transforms.RandomAffine(degrees=10, translate=(0.03, 0.03), scale=(0.95, 1.05)),
+            transforms.ColorJitter(brightness=0.15, contrast=0.15),
+            transforms.ToTensor(),
+            SpeckleNoise(std=0.05, p=0.20),
+            transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD),
+        ])
     raise ValueError(f"augment invalido: {augment} (opcoes: {AUGMENTS})")
 
 
@@ -118,7 +131,12 @@ def get_eval_transform(preproc="rgb_resize"):
 
 if __name__ == "__main__":
     img_dummy = Image.new("RGB", (300, 280), color="gray")
-    for preproc, augment in [("rgb_resize", "pr1"), ("gray_pad", "pr1"), ("gray_pad", "ultrassom")]:
+    for preproc, augment in [
+        ("rgb_resize", "pr1"),
+        ("gray_pad", "pr1"),
+        ("gray_pad", "ultrassom"),
+        ("gray_pad", "ultrassom_moderado"),
+    ]:
         out_train = get_train_transform(preproc, augment)(img_dummy)
         out_eval = get_eval_transform(preproc)(img_dummy)
         print(f"{preproc}/{augment}: train={tuple(out_train.shape)} eval={tuple(out_eval.shape)}")
