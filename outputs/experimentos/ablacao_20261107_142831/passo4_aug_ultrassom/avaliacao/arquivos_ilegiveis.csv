@@ -1,0 +1,11 @@
+conjunto,image,label,bytes,erro
+Kaggle,test/notinfected/img_0_7.jpg,0,0,UnidentifiedImageError
+Kaggle,test/notinfected/OIP (1).jpg,0,0,UnidentifiedImageError
+Kaggle,test/notinfected/WhatsApp Image 2022-04-01 at 3.35.25 PM.jpeg,0,0,UnidentifiedImageError
+Kaggle,test/notinfected/WhatsApp Image 2022-04-01 at 3.39.07 PM.jpeg,0,0,UnidentifiedImageError
+Kaggle,test/infected/OIP.jpg,1,0,UnidentifiedImageError
+Kaggle,test/infected/R.jpg,1,0,UnidentifiedImageError
+Kaggle,test/infected/WhatsApp Image 2022-04-01 at 3.49.22 PM.jpeg,1,0,UnidentifiedImageError
+Kaggle,test/infected/WhatsApp Image 2022-04-01 at 3.49.45 PM.jpeg,1,0,UnidentifiedImageError
+Kaggle,test/infected/WhatsApp Image 2022-04-01 at 3.50.05 PM.jpeg,1,0,UnidentifiedImageError
+Kaggle,test/infected/WhatsApp Image 2022-04-01 at 3.50.20 PM.jpeg,1,0,UnidentifiedImageError

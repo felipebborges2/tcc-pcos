@@ -1,0 +1,5 @@
+conjunto,n,ilegiveis,grupos_com_duplicatas,imagens_em_grupos_com_duplicatas,grupos_rotulos_mistos,duplicatas_do_treino,pct_duplicatas,duplicatas_rotulo_discorda
+PCOSGen-train (interno),3200,0,210.0,2662.0,53.0,,,
+PCOSGen-test,1468,0,,,,1101.0,75.0,146.0
+Kaggle,3856,10,,,,414.0,10.736514522821576,250.0
+Figshare,11784,0,,,,3441.0,29.200610997963338,592.0

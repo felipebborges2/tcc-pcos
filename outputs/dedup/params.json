@@ -1,0 +1,13 @@
+{
+  "threshold": 6,
+  "hash": "imagehash.phash 64 bits, escala de cinza",
+  "pre_resize": 64,
+  "variantes": [
+    "original",
+    "flip_h",
+    "rot90",
+    "rot180",
+    "rot270"
+  ],
+  "imagehash": "4.3.2"
+}

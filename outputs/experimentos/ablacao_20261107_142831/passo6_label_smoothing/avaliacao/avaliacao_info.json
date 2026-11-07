@@ -1,0 +1,27 @@
+{
+  "data_avaliacao": "2026-11-07T16:26:15",
+  "checkpoint": "G:\\tcc\\outputs\\experimentos\\ablacao_20261107_142831\\passo6_label_smoothing\\models\\best_model.pt",
+  "checkpoint_sha256": "ebd8b69b79a8e7949ecc01ad66d2f6667bd3dfa3875f0a88ad2039c83032156f",
+  "checkpoint_epoch": 12,
+  "checkpoint_val_auc": 0.5932615288902714,
+  "threshold": 0.3458051085472107,
+  "threshold_origem": "Youden na validacao",
+  "preproc": "gray_pad",
+  "classes": {
+    "0": "normal",
+    "1": "PCOS (classe positiva)"
+  },
+  "eval_transform": "Compose(\n    Grayscale(num_output_channels=3)\n    PadToSquare()\n    Resize(size=(224, 224), interpolation=bilinear, max_size=None, antialias=True)\n    ToTensor()\n    Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n)",
+  "dedup": "G:\\tcc\\outputs\\dedup\\cross_overlap.csv",
+  "debug_amostras": 0,
+  "device": "cuda",
+  "n_imagens": {
+    "PCOSGen-test (interno)": 1468,
+    "PCOSGen-test (interno) sem duplicatas": 367,
+    "Kaggle (externo 1)": 3846,
+    "Kaggle (externo 1) sem duplicatas": 3432,
+    "Figshare (externo 2)": 11784,
+    "Figshare (externo 2) sem duplicatas": 8343
+  },
+  "n_descartados": 10
+}

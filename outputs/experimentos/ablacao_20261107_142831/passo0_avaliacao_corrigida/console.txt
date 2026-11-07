@@ -1,0 +1,126 @@
+Device: cuda
+
+Carregando modelo de: G:\tcc\outputs\experimentos\luan_pr1_20261021_142522\models\best_model.pt
+Modelo treinado na epoca 9, val_auc=0.8251
+Limiar de decisao: 0.500000 (informado na linha de comando)
+Pre-processamento: rgb_resize
+
+>>> Carregando PCOSGen-test (validacao interna)...
+
+============================================================
+  PCOSGen-test (interno) [todas]
+============================================================
+Amostras: 1468 (normal=417, PCOS=1051)
+AUC-ROC      : 0.9572
+F1-score     : 0.9350
+Acuracia     : 0.9067
+Precisao     : 0.9328
+Sensibilidade: 0.9372 (recall PCOS)
+Especificidade: 0.8297 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      346          71
+  Real 1 (P)       66         985
+
+PCOSGen-test: 1101 de 1468 imagens sao duplicatas do PCOSGen-train
+
+============================================================
+  PCOSGen-test (interno) [sem duplicatas do treino]
+============================================================
+Amostras: 367 (normal=137, PCOS=230)
+AUC-ROC      : 0.9341
+F1-score     : 0.8719
+Acuracia     : 0.8447
+Precisao     : 0.9023
+Sensibilidade: 0.8435 (recall PCOS)
+Especificidade: 0.8467 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      116          21
+  Real 1 (P)       36         194
+
+>>> Carregando Kaggle (validacao externa 1)...
+  [aviso] 10 arquivos descartados (nao sao imagens validas)
+
+============================================================
+  Kaggle (externo 1) [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.7262
+F1-score     : 0.5827
+Acuracia     : 0.5614
+Precisao     : 0.4748
+Sensibilidade: 0.7542 (recall PCOS)
+Especificidade: 0.4295 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      981        1303
+  Real 1 (P)      384        1178
+
+Kaggle: 414 de 3846 imagens sao duplicatas do PCOSGen-train
+
+============================================================
+  Kaggle (externo 1) [sem duplicatas do treino]
+============================================================
+Amostras: 3432 (normal=2008, PCOS=1424)
+AUC-ROC      : 0.7121
+F1-score     : 0.5739
+Acuracia     : 0.5422
+Precisao     : 0.4675
+Sensibilidade: 0.7430 (recall PCOS)
+Especificidade: 0.3999 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      803        1205
+  Real 1 (P)      366        1058
+
+>>> Carregando Figshare (validacao externa 2)...
+
+============================================================
+  Figshare (externo 2) [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.6781
+F1-score     : 0.6810
+Acuracia     : 0.6166
+Precisao     : 0.6536
+Sensibilidade: 0.7108 (recall PCOS)
+Especificidade: 0.4888 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)     2444        2556
+  Real 1 (P)     1962        4822
+
+Figshare: 3441 de 11784 imagens sao duplicatas do PCOSGen-train
+
+============================================================
+  Figshare (externo 2) [sem duplicatas do treino]
+============================================================
+Amostras: 8343 (normal=4369, PCOS=3974)
+AUC-ROC      : 0.7190
+F1-score     : 0.6414
+Acuracia     : 0.5991
+Precisao     : 0.5587
+Sensibilidade: 0.7529 (recall PCOS)
+Especificidade: 0.4591 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)     2006        2363
+  Real 1 (P)      982        2992
+
+Arquivos descartados (nao sao imagens validas): 10
+
+======================================================================
+RESUMO
+======================================================================
+Dataset                                            n     AUC      F1     Acc
+----------------------------------------------------------------------
+PCOSGen-test (interno)                          1468  0.9572  0.9350  0.9067
+PCOSGen-test (interno) sem duplicatas            367  0.9341  0.8719  0.8447
+Kaggle (externo 1)                              3846  0.7262  0.5827  0.5614
+Kaggle (externo 1) sem duplicatas               3432  0.7121  0.5739  0.5422
+Figshare (externo 2)                           11784  0.6781  0.6810  0.6166
+Figshare (externo 2) sem duplicatas             8343  0.7190  0.6414  0.5991
+
+Resultados salvos em: G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo0_avaliacao_corrigida\avaliacao\evaluation_results.csv
+Figuras salvas em G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo0_avaliacao_corrigida\figuras

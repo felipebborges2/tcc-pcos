@@ -1,0 +1,18 @@
+{
+  "threshold": 0.5066843032836914,
+  "origem": "Youden na validacao (calibrar_limiar.py)",
+  "checkpoint": "G:\\tcc\\outputs\\experimentos\\luan_pr1_20261021_142522\\models\\best_model.pt",
+  "checkpoint_epoch": 9,
+  "split_validacao": "aleatorio",
+  "preproc": "rgb_resize",
+  "n_validacao": 640,
+  "validacao_limiar_0.5": {
+    "sensibilidade": 0.6013071895424836,
+    "especificidade": 0.850828729281768
+  },
+  "validacao_limiar_youden": {
+    "sensibilidade": 0.5882352941176471,
+    "especificidade": 0.8895027624309392
+  },
+  "data": "2026-11-07T14:30:43"
+}

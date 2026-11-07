@@ -1,0 +1,187 @@
+Pasta do experimento: G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo5_adamw_gradual
+Device: cuda
+GPU: NVIDIA GeForce RTX 5060
+
+Carregando rotulos...
+Divisao por grupo de duplicatas (G:\tcc\outputs\dedup\pcosgen_train_groups.csv)
+Treino: 2571 | Validacao: 629
+Distribuicao treino : {1: 1835, 0: 736}
+Distribuicao validac: {1: 462, 0: 167}
+
+Class weights: normal=1.747, PCOS=0.701
+pos_weight para BCE: 0.401
+
+Batches treino: 81 | Batches val: 20
+
+Iniciando treinamento por ate 50 epocas...
+Early stopping com paciencia de 15 epocas (menor val_loss)
+AdamW: lr backbone=1e-05, lr cabeca=0.001, weight decay=0.05
+Descongelamento gradual (epoca -> estagios): {1: 0, 4: 1, 7: 2, 10: 4}
+
+Ep   1 | trn loss=0.3868 acc=0.559 auc=0.615 | val loss=0.3836 acc=0.514 auc=0.558 f1=0.589 | lr=1.0e-05 | 47.5s
+  -> melhor modelo salvo (menor val_loss: AUC=0.5577, loss=0.3836, limiar Youden=0.5065)
+Ep   2 | trn loss=0.3649 acc=0.626 auc=0.695 | val loss=0.3816 acc=0.515 auc=0.563 f1=0.595 | lr=1.0e-05 | 46.8s
+  -> melhor modelo salvo (menor val_loss: AUC=0.5629, loss=0.3816, limiar Youden=0.5191)
+Ep   3 | trn loss=0.3528 acc=0.630 auc=0.718 | val loss=0.3878 acc=0.382 auc=0.563 f1=0.312 | lr=1.0e-05 | 46.8s
+Ep   4 | trn loss=0.3402 acc=0.649 auc=0.738 | val loss=0.3757 acc=0.504 auc=0.568 f1=0.593 | lr=1.0e-05 | 47.7s
+  -> melhor modelo salvo (menor val_loss: AUC=0.5678, loss=0.3757, limiar Youden=0.5274)
+Ep   5 | trn loss=0.3331 acc=0.636 auc=0.738 | val loss=0.3734 acc=0.510 auc=0.564 f1=0.604 | lr=1.0e-05 | 49.0s
+  -> melhor modelo salvo (menor val_loss: AUC=0.5641, loss=0.3734, limiar Youden=0.5357)
+Ep   6 | trn loss=0.3234 acc=0.641 auc=0.750 | val loss=0.3709 acc=0.606 auc=0.569 f1=0.721 | lr=1.0e-05 | 48.2s
+  -> melhor modelo salvo (menor val_loss: AUC=0.5690, loss=0.3709, limiar Youden=0.3900)
+Ep   7 | trn loss=0.3139 acc=0.650 auc=0.757 | val loss=0.3717 acc=0.545 auc=0.569 f1=0.647 | lr=1.0e-05 | 50.2s
+Ep   8 | trn loss=0.3060 acc=0.663 auc=0.774 | val loss=0.3764 acc=0.409 auc=0.571 f1=0.392 | lr=1.0e-05 | 49.2s
+Ep   9 | trn loss=0.3019 acc=0.657 auc=0.778 | val loss=0.3714 acc=0.474 auc=0.575 f1=0.530 | lr=1.0e-05 | 49.4s
+Ep  10 | trn loss=0.2915 acc=0.661 auc=0.793 | val loss=0.3703 acc=0.463 auc=0.575 f1=0.527 | lr=1.0e-05 | 53.4s
+  -> melhor modelo salvo (menor val_loss: AUC=0.5748, loss=0.3703, limiar Youden=0.3538)
+Ep  11 | trn loss=0.2860 acc=0.667 auc=0.796 | val loss=0.3677 acc=0.523 auc=0.584 f1=0.614 | lr=1.0e-05 | 53.6s
+  -> melhor modelo salvo (menor val_loss: AUC=0.5843, loss=0.3677, limiar Youden=0.3739)
+Ep  12 | trn loss=0.2814 acc=0.680 auc=0.803 | val loss=0.3694 acc=0.444 auc=0.596 f1=0.479 | lr=1.0e-05 | 52.6s
+Ep  13 | trn loss=0.2855 acc=0.660 auc=0.794 | val loss=0.3754 acc=0.386 auc=0.595 f1=0.337 | lr=1.0e-05 | 53.2s
+Ep  14 | trn loss=0.2859 acc=0.667 auc=0.795 | val loss=0.3715 acc=0.450 auc=0.601 f1=0.464 | lr=1.0e-05 | 53.0s
+Ep  15 | trn loss=0.2784 acc=0.665 auc=0.802 | val loss=0.3748 acc=0.429 auc=0.603 f1=0.438 | lr=5.0e-06 | 52.6s
+Ep  16 | trn loss=0.2764 acc=0.670 auc=0.811 | val loss=0.3742 acc=0.445 auc=0.610 f1=0.450 | lr=5.0e-06 | 52.4s
+Ep  17 | trn loss=0.2745 acc=0.667 auc=0.806 | val loss=0.3769 acc=0.410 auc=0.607 f1=0.379 | lr=5.0e-06 | 53.2s
+Ep  18 | trn loss=0.2735 acc=0.671 auc=0.817 | val loss=0.3714 acc=0.448 auc=0.609 f1=0.467 | lr=5.0e-06 | 53.7s
+Ep  19 | trn loss=0.2752 acc=0.666 auc=0.808 | val loss=0.3699 acc=0.429 auc=0.612 f1=0.420 | lr=2.5e-06 | 53.1s
+Ep  20 | trn loss=0.2721 acc=0.681 auc=0.814 | val loss=0.3782 acc=0.401 auc=0.608 f1=0.351 | lr=2.5e-06 | 53.2s
+Ep  21 | trn loss=0.2766 acc=0.673 auc=0.812 | val loss=0.3748 acc=0.417 auc=0.611 f1=0.379 | lr=2.5e-06 | 53.2s
+Ep  22 | trn loss=0.2734 acc=0.656 auc=0.813 | val loss=0.3749 acc=0.401 auc=0.616 f1=0.342 | lr=2.5e-06 | 53.0s
+Ep  23 | trn loss=0.2712 acc=0.676 auc=0.817 | val loss=0.3755 acc=0.424 auc=0.611 f1=0.403 | lr=1.3e-06 | 53.0s
+Ep  24 | trn loss=0.2658 acc=0.687 auc=0.824 | val loss=0.3769 acc=0.394 auc=0.614 f1=0.340 | lr=1.3e-06 | 53.6s
+Ep  25 | trn loss=0.2673 acc=0.670 auc=0.820 | val loss=0.3764 acc=0.393 auc=0.612 f1=0.332 | lr=1.3e-06 | 53.2s
+Ep  26 | trn loss=0.2675 acc=0.677 auc=0.817 | val loss=0.3752 acc=0.426 auc=0.612 f1=0.413 | lr=1.3e-06 | 53.2s
+
+Early stopping: 15 epocas sem melhora
+
+Treinamento concluido.
+Melhor epoca: 11 (AUC val=0.5843, loss val=0.3677)
+Limiar de Youden (validacao): 0.3739
+Modelo salvo em: G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo5_adamw_gradual\models\best_model.pt
+Log salvo em: G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo5_adamw_gradual\logs\train_log.csv
+Device: cuda
+
+Carregando modelo de: G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo5_adamw_gradual\models\best_model.pt
+Modelo treinado na epoca 11, val_auc=0.5843
+Limiar de decisao: 0.373886 (Youden na validacao)
+Pre-processamento: gray_pad
+
+>>> Carregando PCOSGen-test (validacao interna)...
+
+============================================================
+  PCOSGen-test (interno) [todas]
+============================================================
+Amostras: 1468 (normal=417, PCOS=1051)
+AUC-ROC      : 0.9408
+F1-score     : 0.9104
+Acuracia     : 0.8617
+Precisao     : 0.8493
+Sensibilidade: 0.9810 (recall PCOS)
+Especificidade: 0.5612 (recall normal)
+Matriz de confusao (limiar 0.3739):
+               Predito 0   Predito 1
+  Real 0 (N)      234         183
+  Real 1 (P)       20        1031
+
+PCOSGen-test: 1101 de 1468 imagens sao duplicatas do PCOSGen-train
+
+============================================================
+  PCOSGen-test (interno) [sem duplicatas do treino]
+============================================================
+Amostras: 367 (normal=137, PCOS=230)
+AUC-ROC      : 0.9387
+F1-score     : 0.8990
+Acuracia     : 0.8665
+Precisao     : 0.8549
+Sensibilidade: 0.9478 (recall PCOS)
+Especificidade: 0.7299 (recall normal)
+Matriz de confusao (limiar 0.3739):
+               Predito 0   Predito 1
+  Real 0 (N)      100          37
+  Real 1 (P)       12         218
+
+>>> Carregando Kaggle (validacao externa 1)...
+  [aviso] 10 arquivos descartados (nao sao imagens validas)
+
+============================================================
+  Kaggle (externo 1) [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.7583
+F1-score     : 0.5924
+Acuracia     : 0.5777
+Precisao     : 0.4872
+Sensibilidade: 0.7554 (recall PCOS)
+Especificidade: 0.4562 (recall normal)
+Matriz de confusao (limiar 0.3739):
+               Predito 0   Predito 1
+  Real 0 (N)     1042        1242
+  Real 1 (P)      382        1180
+
+Kaggle: 414 de 3846 imagens sao duplicatas do PCOSGen-train
+
+============================================================
+  Kaggle (externo 1) [sem duplicatas do treino]
+============================================================
+Amostras: 3432 (normal=2008, PCOS=1424)
+AUC-ROC      : 0.7477
+F1-score     : 0.5962
+Acuracia     : 0.5816
+Precisao     : 0.4972
+Sensibilidade: 0.7444 (recall PCOS)
+Especificidade: 0.4661 (recall normal)
+Matriz de confusao (limiar 0.3739):
+               Predito 0   Predito 1
+  Real 0 (N)      936        1072
+  Real 1 (P)      364        1060
+
+>>> Carregando Figshare (validacao externa 2)...
+
+============================================================
+  Figshare (externo 2) [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.7895
+F1-score     : 0.7257
+Acuracia     : 0.6343
+Precisao     : 0.6387
+Sensibilidade: 0.8402 (recall PCOS)
+Especificidade: 0.3550 (recall normal)
+Matriz de confusao (limiar 0.3739):
+               Predito 0   Predito 1
+  Real 0 (N)     1775        3225
+  Real 1 (P)     1084        5700
+
+Figshare: 3441 de 11784 imagens sao duplicatas do PCOSGen-train
+
+============================================================
+  Figshare (externo 2) [sem duplicatas do treino]
+============================================================
+Amostras: 8343 (normal=4369, PCOS=3974)
+AUC-ROC      : 0.7726
+F1-score     : 0.6240
+Acuracia     : 0.5554
+Precisao     : 0.5225
+Sensibilidade: 0.7745 (recall PCOS)
+Especificidade: 0.3561 (recall normal)
+Matriz de confusao (limiar 0.3739):
+               Predito 0   Predito 1
+  Real 0 (N)     1556        2813
+  Real 1 (P)      896        3078
+
+Arquivos descartados (nao sao imagens validas): 10
+
+======================================================================
+RESUMO
+======================================================================
+Dataset                                            n     AUC      F1     Acc
+----------------------------------------------------------------------
+PCOSGen-test (interno)                          1468  0.9408  0.9104  0.8617
+PCOSGen-test (interno) sem duplicatas            367  0.9387  0.8990  0.8665
+Kaggle (externo 1)                              3846  0.7583  0.5924  0.5777
+Kaggle (externo 1) sem duplicatas               3432  0.7477  0.5962  0.5816
+Figshare (externo 2)                           11784  0.7895  0.7257  0.6343
+Figshare (externo 2) sem duplicatas             8343  0.7726  0.6240  0.5554
+
+Resultados salvos em: G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo5_adamw_gradual\avaliacao\evaluation_results.csv
+Figuras salvas em G:\tcc\outputs\experimentos\ablacao_20261107_142831\passo5_adamw_gradual\figuras

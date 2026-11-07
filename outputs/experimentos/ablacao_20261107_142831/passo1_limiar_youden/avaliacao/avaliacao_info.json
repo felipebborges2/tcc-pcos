@@ -1,0 +1,27 @@
+{
+  "data_avaliacao": "2026-11-07T14:30:50",
+  "checkpoint": "G:\\tcc\\outputs\\experimentos\\luan_pr1_20261021_142522\\models\\best_model.pt",
+  "checkpoint_sha256": "83d279312554a7961da67c06b5a6d5d4d7e64282f8cd220da47a11145e163e93",
+  "checkpoint_epoch": 9,
+  "checkpoint_val_auc": 0.8251062241962468,
+  "threshold": 0.5066843032836914,
+  "threshold_origem": "Youden na validacao (calibrar_limiar.py) (G:\\tcc\\outputs\\experimentos\\ablacao_20261107_142831\\passo1_limiar_youden\\limiar.json)",
+  "preproc": "rgb_resize",
+  "classes": {
+    "0": "normal",
+    "1": "PCOS (classe positiva)"
+  },
+  "eval_transform": "Compose(\n    Resize(size=(224, 224), interpolation=bilinear, max_size=None, antialias=True)\n    ToTensor()\n    Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n)",
+  "dedup": "G:\\tcc\\outputs\\dedup\\cross_overlap.csv",
+  "debug_amostras": 0,
+  "device": "cuda",
+  "n_imagens": {
+    "PCOSGen-test (interno)": 1468,
+    "PCOSGen-test (interno) sem duplicatas": 367,
+    "Kaggle (externo 1)": 3846,
+    "Kaggle (externo 1) sem duplicatas": 3432,
+    "Figshare (externo 2)": 11784,
+    "Figshare (externo 2) sem duplicatas": 8343
+  },
+  "n_descartados": 10
+}
