@@ -59,9 +59,42 @@ def set_trainable_stages(model, n_stages):
             p.requires_grad = True
 
 
-def get_param_groups(model, lr_backbone, lr_head):
-    """Dois grupos para o otimizador: backbone e cabeca, com LRs diferentes."""
+def freeze_batchnorm_stats(model):
+    """Congela estatisticas e affine de BN; chamar apos train() e liberar stages."""
+    for module in model.modules():
+        if isinstance(module, nn.BatchNorm2d):
+            module.eval()
+            if module.weight is not None:
+                module.weight.requires_grad = False
+            if module.bias is not None:
+                module.bias.requires_grad = False
+
+
+def get_param_groups(model, lr_backbone, lr_head, weight_decay=None):
+    """Separa backbone/cabeca, opcionalmente sem decay em biases e parametros 1D.
+
+    Inclui parametros congelados para permitir o descongelamento gradual.
+    weight_decay=None preserva os dois grupos originais.
+    """
     head_ids = {id(p) for p in model.fc.parameters()}
+    if weight_decay is not None:
+        groups = {
+            f"{role}_{decay}": {
+                "params": [],
+                "name": f"{role}_{decay}",
+                "role": role,
+                "lr": lr,
+                "weight_decay": weight_decay if decay == "decay" else 0.0,
+            }
+            for role, lr in [("backbone", lr_backbone), ("head", lr_head)]
+            for decay in ["decay", "no_decay"]
+        }
+        for name, param in model.named_parameters():
+            role = "head" if id(param) in head_ids else "backbone"
+            decay = "no_decay" if name == "bias" or name.endswith(".bias") or param.ndim == 1 else "decay"
+            groups[f"{role}_{decay}"]["params"].append(param)
+        return list(groups.values())
+
     backbone = [p for p in model.parameters() if id(p) not in head_ids]
     return [
         {"params": backbone, "lr": lr_backbone},
