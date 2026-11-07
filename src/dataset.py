@@ -1,6 +1,6 @@
 """
 dataset.py
-Dataset PyTorch para o PCOSGen-train.
+Dataset PyTorch para o PCOSGen (train e test).
 
 Convencao de rotulos no projeto: 0 = normal, 1 = PCOS.
 PCOSGen usa Healthy=1 (normal) e Healthy=0 (PCOS), entao invertemos no load.
@@ -11,7 +11,7 @@ from PIL import Image
 import pandas as pd
 import torch
 from torch.utils.data import Dataset
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import StratifiedGroupKFold, train_test_split
 
 
 class PCOSGenTrainDataset(Dataset):
@@ -32,13 +32,24 @@ class PCOSGenTrainDataset(Dataset):
             image = self.transform(image)
         return image, label
 
+    def sample_id(self, idx):
+        return str(self.labels_df.iloc[idx]["imagePath"])
 
-def load_pcosgen_train_labels(labels_path):
-    df = pd.read_excel(labels_path)
+
+def load_pcosgen_labels(labels_path):
+    """Le rotulos do PCOSGen (xlsx no train, csv no test). Healthy=1 -> label 0 (normal)."""
+    labels_path = Path(labels_path)
+    if labels_path.suffix.lower() == ".csv":
+        df = pd.read_csv(labels_path)
+    else:
+        df = pd.read_excel(labels_path)
     df.columns = [c.strip() for c in df.columns]
     df["label"] = 1 - df["Healthy"].astype(int)
-    df = df[["imagePath", "label"]]
-    return df
+    return df[["imagePath", "label"]]
+
+
+def load_pcosgen_train_labels(labels_path):
+    return load_pcosgen_labels(labels_path)
 
 
 def split_train_val(df, val_size=0.2, seed=42):
@@ -49,6 +60,20 @@ def split_train_val(df, val_size=0.2, seed=42):
         random_state=seed,
     )
     return train_df.reset_index(drop=True), val_df.reset_index(drop=True)
+
+
+def split_train_val_grupos(df, groups, n_splits=5, fold=0, seed=42):
+    """
+    Divide treino/validacao garantindo que duplicatas (mesmo group_id, gerado
+    por dedup.py) fiquem sempre do mesmo lado. n_splits=5 -> ~20% de validacao.
+    """
+    sgkf = StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=seed)
+    splits = list(sgkf.split(df, df["label"], groups=groups))
+    train_idx, val_idx = splits[fold]
+    return (
+        df.iloc[train_idx].reset_index(drop=True),
+        df.iloc[val_idx].reset_index(drop=True),
+    )
 
 
 if __name__ == "__main__":

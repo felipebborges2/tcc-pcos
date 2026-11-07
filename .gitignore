@@ -3,7 +3,7 @@ data/
 
 # Modelos treinados
 outputs/models/
-outputs/experimentos/*/models/
+outputs/experimentos/**/models/
 
 # Ambiente virtual Python
 venv/

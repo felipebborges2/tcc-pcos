@@ -42,6 +42,33 @@ def build_resnet50(pretrained=True, freeze_backbone=False, dropout=0.5):
     return model
 
 
+STAGES = ["layer4", "layer3", "layer2", "layer1"]  # do mais profundo ao mais raso
+
+
+def set_trainable_stages(model, n_stages):
+    """
+    Congela o backbone e libera a cabeca (fc) + os n_stages mais profundos.
+    n_stages=0 -> so a cabeca; n_stages=4 -> rede inteira (exceto conv1/bn1).
+    """
+    for p in model.parameters():
+        p.requires_grad = False
+    for p in model.fc.parameters():
+        p.requires_grad = True
+    for name in STAGES[:n_stages]:
+        for p in getattr(model, name).parameters():
+            p.requires_grad = True
+
+
+def get_param_groups(model, lr_backbone, lr_head):
+    """Dois grupos para o otimizador: backbone e cabeca, com LRs diferentes."""
+    head_ids = {id(p) for p in model.fc.parameters()}
+    backbone = [p for p in model.parameters() if id(p) not in head_ids]
+    return [
+        {"params": backbone, "lr": lr_backbone},
+        {"params": list(model.fc.parameters()), "lr": lr_head},
+    ]
+
+
 def count_parameters(model):
     total = sum(p.numel() for p in model.parameters())
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
