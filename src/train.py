@@ -407,6 +407,29 @@ def main():
         print(f"Label smoothing: {args.label_smoothing}")
     print()
 
+    # epoca 0: modelo antes de qualquer atualizacao (so' registro; nao entra na
+    # selecao do checkpoint nem no early stopping). O treino da epoca 0 e' avaliado
+    # sem augmentation e em modo eval; nas demais epocas o valor de treino e' a
+    # media durante a epoca, com augmentation.
+    train_eval_loader = make_loader(PCOSGenTrainDataset(IMG_DIR, train_df, transform=eval_transform),
+                                    False, args.num_workers, device)
+    tr0 = evaluate(model, train_eval_loader, criterion, device)
+    va0 = evaluate(model, val_loader, criterion, device)
+    row0 = {
+        "epoch": 0,
+        "train_loss": tr0[0], "train_acc": tr0[1], "train_auc": tr0[2], "train_f1": tr0[3],
+        "val_loss": va0[0], "val_acc": va0[1], "val_auc": va0[2], "val_f1": va0[3],
+        "lr": optimizer.param_groups[0]["lr"], "lr_head": optimizer.param_groups[-1]["lr"],
+        "trainable_params": sum(p.numel() for p in model.parameters() if p.requires_grad),
+        "time_sec": 0.0,
+    }
+    with open(LOG_PATH, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=row0.keys())
+        writer.writeheader()
+        writer.writerow(row0)
+    print(f"Ep   0 | trn loss={tr0[0]:.4f} auc={tr0[2]:.3f} | "
+          f"val loss={va0[0]:.4f} auc={va0[2]:.3f} | antes do treino")
+
     best_score = None
     best_val_auc = None
     patience_counter = 0
@@ -464,10 +487,7 @@ def main():
             "time_sec": elapsed,
         }
         with open(LOG_PATH, "a", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=row.keys())
-            if epoch == 1:
-                writer.writeheader()
-            writer.writerow(row)
+            csv.DictWriter(f, fieldnames=row.keys()).writerow(row)
 
         print(
             f"Ep {epoch:3d} | "
