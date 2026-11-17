@@ -8,6 +8,8 @@ Figuras da validacao cruzada na base deduplicada (treinar_dedup_cv.py):
   (mesmo formato) e a taxa de aprendizado de cada fold
 - roc_externos.png: curvas ROC no Kaggle e no Figshare, uma por fold
 - metricas_resumo.png: media +- desvio entre folds (validacao, Kaggle, Figshare)
+- matrizes_confusao_resumo.png: matrizes somadas entre folds (limiar 0,5 e Youden)
+- matrizes_confusao_por_fold_<limiar>.png: uma matriz por fold e conjunto
 
 Uso:
     python src/gerar_figuras_dedup_cv.py --exp outputs/experimentos/dedup_pelvinext_cv_<data_hora>
@@ -186,6 +188,65 @@ def fig_resumo(exp, saida):
     plt.close(fig)
 
 
+DS_ROTULOS = {"Validacao do fold (interno)": "Validação (interno)", "Kaggle": "Kaggle", "Figshare": "Figshare"}
+LIMIARES = {"0,5": "limiar 0,5", "Youden (validacao)": "limiar de Youden (validação do fold)"}
+
+
+def _matriz(ax, tn, fp, fn, tp, titulo, cmap="Blues"):
+    m = np.array([[tn, fp], [fn, tp]], dtype=float)
+    pct = m / m.sum(axis=1, keepdims=True).clip(min=1)
+    ax.imshow(pct, cmap=cmap, vmin=0, vmax=1)
+    for i in range(2):
+        for j in range(2):
+            ax.text(j, i, f"{int(round(m[i, j]))}\n({fmt(100 * pct[i, j], 1)}%)", ha="center", va="center",
+                    fontsize=10, color="white" if pct[i, j] > 0.55 else TINTA)
+    ax.set_xticks([0, 1], ["Normal", "SOP"])
+    ax.set_yticks([0, 1], ["Normal", "SOP"])
+    ax.set_xlabel("Predito")
+    ax.set_ylabel("Real")
+    ax.set_title(titulo, fontsize=10)
+    for lado in ax.spines.values():
+        lado.set_visible(False)
+
+
+def fig_matrizes_resumo(exp, saida):
+    """Matrizes somadas entre folds: validacao = cada imagem uma vez (fora do fold);
+    externos = soma das predicoes dos 5 modelos (cada imagem conta 5 vezes)."""
+    r = pd.read_csv(exp / "metricas_por_fold.csv")
+    r = r[r["subconjunto"] == "todas"]
+    fig, axes = plt.subplots(2, 3, figsize=(13, 8.6))
+    for i, (lim, rot_lim) in enumerate(LIMIARES.items()):
+        for j, (ds, rot_ds) in enumerate(DS_ROTULOS.items()):
+            d = r[(r["dataset"] == ds) & (r["limiar_tipo"] == lim)]
+            tn, fp, fn, tp = (d[c].sum() for c in ("tn", "fp", "fn", "tp"))
+            acc = (tn + tp) / (tn + fp + fn + tp)
+            sens = tp / max(tp + fn, 1); esp = tn / max(tn + fp, 1)
+            _matriz(axes[i, j], tn, fp, fn, tp,
+                    f"{rot_ds} — {rot_lim}\nacurácia {fmt(acc)} | sens. {fmt(sens)} | espec. {fmt(esp)}")
+    fig.suptitle("Matrizes de confusão — 5 folds somados (percentual por linha = por classe real)", fontsize=12)
+    fig.text(0.5, 0.01, "Validação: cada uma das 225 imagens aparece uma vez (predição do modelo em que ela ficou fora "
+             "do treino). Kaggle e Figshare: soma das predições dos 5 modelos (cada imagem conta 5 vezes).",
+             ha="center", fontsize=8.5, color=TINTA_SECUNDARIA)
+    fig.tight_layout(rect=(0, 0.03, 1, 1))
+    fig.savefig(saida, dpi=200, facecolor="white")
+    plt.close(fig)
+
+
+def fig_matrizes_por_fold(exp, folds, lim, saida):
+    r = pd.read_csv(exp / "metricas_por_fold.csv")
+    r = r[(r["subconjunto"] == "todas") & (r["limiar_tipo"] == lim)]
+    fig, axes = plt.subplots(len(folds), 3, figsize=(11, 3.3 * len(folds)))
+    for i, k in enumerate(folds):
+        for j, (ds, rot_ds) in enumerate(DS_ROTULOS.items()):
+            d = r[(r["dataset"] == ds) & (r["fold"] == k)].iloc[0]
+            _matriz(axes[i, j], d["tn"], d["fp"], d["fn"], d["tp"],
+                    f"Fold {k} — {rot_ds}\nlimiar {fmt(d['threshold'])} | AUC {fmt(d['auc_roc'])}")
+    fig.suptitle(f"Matrizes de confusão por fold — {LIMIARES[lim]}", fontsize=12)
+    fig.tight_layout(rect=(0, 0, 1, 0.985))
+    fig.savefig(saida, dpi=150, facecolor="white")
+    plt.close(fig)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__.split("\n")[2])
     p.add_argument("--exp", type=Path, required=True)
@@ -198,6 +259,9 @@ def main():
     fig_outras_metricas(exp, folds, out / "curvas_acuracia_f1_lr.png")
     fig_roc(exp, folds, out / "roc_externos.png")
     fig_resumo(exp, out / "metricas_resumo.png")
+    fig_matrizes_resumo(exp, out / "matrizes_confusao_resumo.png")
+    fig_matrizes_por_fold(exp, folds, "0,5", out / "matrizes_confusao_por_fold_limiar05.png")
+    fig_matrizes_por_fold(exp, folds, "Youden (validacao)", out / "matrizes_confusao_por_fold_youden.png")
     print(f"Figuras salvas em {out}")
 
 

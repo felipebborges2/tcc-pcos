@@ -1,0 +1,26 @@
+{
+  "fold": 1,
+  "inicio": "2026-11-16T21:18:26",
+  "base": "G:\\tcc\\data\\pcosgen_dedup\\pcosgen-deduplicated",
+  "n_treino": 180,
+  "n_validacao": 45,
+  "dist_treino": {
+    "1": 130,
+    "0": 50
+  },
+  "dist_validacao": {
+    "1": 32,
+    "0": 13
+  },
+  "preproc": "gray_pad",
+  "augment": "pr1",
+  "otimizacao": "pr1 (passo 3)",
+  "pos_weight": 0.3846153846153846,
+  "epocas_max": 80,
+  "early_stopping": "desativado",
+  "fim": "2026-11-16T21:36:20",
+  "epocas_executadas": 80,
+  "melhor_epoca": 21,
+  "melhor_val_auc": 0.9471153846153846,
+  "limiar_youden": 0.7792995572090149
+}

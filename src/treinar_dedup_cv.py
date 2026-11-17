@@ -13,7 +13,8 @@ Treino e avaliacao na base PCOSGen deduplicada do PelviNeXt (Bhuiyan et al.,
 - Nenhum arquivo de imagem ou rotulo e' alterado.
 
 Uso:
-    python src/treinar_dedup_cv.py [--out-dir <pasta>] [--debug-amostras N --epocas N]
+    python src/treinar_dedup_cv.py [--out-dir <pasta>] [--epocas N] [--sem-early-stopping]
+                                   [--debug-amostras N]
 
 Saidas em <out-dir> (padrao outputs/experimentos/dedup_pelvinext_cv_<data_hora>):
 - fold<k>/: config.json, logs/train_log.csv, models/best_model.pt, splits/,
@@ -106,7 +107,8 @@ def train_fold(k, train_df, val_df, fold_dir, args, device):
               "dist_validacao": val_df["label"].value_counts().to_dict(),
               "preproc": PREPROC, "augment": AUGMENT, "otimizacao": "pr1 (passo 3)",
               "pos_weight": pos_weight.item(), "epocas_max": args.epocas,
-              "early_stopping": f"{T.EARLY_STOPPING_PATIENCE} epocas sem melhora da val_auc"}
+              "early_stopping": ("desativado" if args.sem_early_stopping
+                                 else f"{T.EARLY_STOPPING_PATIENCE} epocas sem melhora da val_auc")}
 
     # epoca 0: modelo antes de qualquer atualizacao (so' registro; nao entra na selecao).
     # O "treino" da epoca 0 e' avaliado sem augmentation e em modo eval; nas demais
@@ -154,7 +156,7 @@ def train_fold(k, train_df, val_df, fold_dir, args, device):
                           "logit": va_logits}).to_csv(fold_dir / "validacao_scores.csv", index=False)
         else:
             patience += 1
-            if patience >= T.EARLY_STOPPING_PATIENCE:
+            if not args.sem_early_stopping and patience >= T.EARLY_STOPPING_PATIENCE:
                 print(f"[fold {k}] early stopping na epoca {epoch}", flush=True)
                 break
     ck = torch.load(model_path, map_location="cpu", weights_only=True)
@@ -170,6 +172,8 @@ def main():
     p.add_argument("--out-dir", type=Path, default=None)
     p.add_argument("--epocas", type=int, default=T.NUM_EPOCHS)
     p.add_argument("--num-workers", type=int, default=4)
+    p.add_argument("--sem-early-stopping", action="store_true",
+                   help="treina todas as --epocas; o modelo usado continua sendo o da maior val_auc")
     p.add_argument("--debug-amostras", type=int, default=0)
     args = p.parse_args()
     out = (args.out_dir or RAIZ / "outputs" / "experimentos"

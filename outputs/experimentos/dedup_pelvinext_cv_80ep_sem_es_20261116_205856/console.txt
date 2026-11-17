@@ -1,0 +1,1187 @@
+Pasta: G:\tcc\outputs\experimentos\dedup_pelvinext_cv_80ep_sem_es_20261116_205856
+Device: cuda
+Base deduplicada: 225 imagens {1: 162, 0: 63}
+Sem hash para 1 imagem(ns) da base deduplicada: ['image11431.jpg']
+  [aviso] 10 arquivos descartados (nao sao imagens validas)
+Kaggle: 3846 imagens, 26 quase-copias das 225
+Figshare: 11784 imagens, 167 quase-copias das 225
+
+===== Fold 0: treino 180 | validacao 45 =====
+[fold 0] Ep   0 | trn loss=0.3979 auc=0.316 | val loss=0.3820 auc=0.615 | antes do treino
+[fold 0] Ep   1 | trn loss=0.3919 auc=0.464 | val loss=0.3755 auc=0.740 | 18.2s
+[fold 0] Ep   2 | trn loss=0.3658 auc=0.714 | val loss=0.3737 auc=0.731 | 15.5s
+[fold 0] Ep   3 | trn loss=0.3386 auc=0.823 | val loss=0.3652 auc=0.760 | 14.5s
+[fold 0] Ep   4 | trn loss=0.3380 auc=0.806 | val loss=0.3622 auc=0.798 | 14.7s
+[fold 0] Ep   5 | trn loss=0.2962 auc=0.862 | val loss=0.3469 auc=0.834 | 14.2s
+[fold 0] Ep   6 | trn loss=0.2669 auc=0.894 | val loss=0.3357 auc=0.849 | 13.9s
+[fold 0] Ep   7 | trn loss=0.2349 auc=0.918 | val loss=0.3175 auc=0.865 | 14.1s
+[fold 0] Ep   8 | trn loss=0.2100 auc=0.924 | val loss=0.3055 auc=0.885 | 14.1s
+[fold 0] Ep   9 | trn loss=0.1866 auc=0.955 | val loss=0.2972 auc=0.925 | 13.8s
+[fold 0] Ep  10 | trn loss=0.1619 auc=0.962 | val loss=0.2908 auc=0.942 | 14.3s
+[fold 0] Ep  11 | trn loss=0.1714 auc=0.956 | val loss=0.2512 auc=0.947 | 17.2s
+[fold 0] Ep  12 | trn loss=0.1217 auc=0.982 | val loss=0.1870 auc=0.969 | 16.1s
+[fold 0] Ep  13 | trn loss=0.1145 auc=0.980 | val loss=0.1754 auc=0.964 | 12.9s
+[fold 0] Ep  14 | trn loss=0.0926 auc=0.991 | val loss=0.2001 auc=0.945 | 12.7s
+[fold 0] Ep  15 | trn loss=0.0701 auc=0.994 | val loss=0.1966 auc=0.945 | 12.9s
+[fold 0] Ep  16 | trn loss=0.0901 auc=0.990 | val loss=0.2909 auc=0.923 | 12.8s
+[fold 0] Ep  17 | trn loss=0.0567 auc=0.995 | val loss=0.2403 auc=0.952 | 13.0s
+[fold 0] Ep  18 | trn loss=0.0473 auc=0.998 | val loss=0.2742 auc=0.913 | 12.8s
+[fold 0] Ep  19 | trn loss=0.0527 auc=0.997 | val loss=0.2479 auc=0.925 | 13.0s
+[fold 0] Ep  20 | trn loss=0.0408 auc=0.999 | val loss=0.2180 auc=0.933 | 15.9s
+[fold 0] Ep  21 | trn loss=0.0293 auc=1.000 | val loss=0.2031 auc=0.930 | 12.7s
+[fold 0] Ep  22 | trn loss=0.0316 auc=1.000 | val loss=0.2059 auc=0.930 | 12.9s
+[fold 0] Ep  23 | trn loss=0.0355 auc=0.999 | val loss=0.2018 auc=0.938 | 12.8s
+[fold 0] Ep  24 | trn loss=0.0200 auc=1.000 | val loss=0.1976 auc=0.945 | 12.7s
+[fold 0] Ep  25 | trn loss=0.0140 auc=1.000 | val loss=0.1994 auc=0.947 | 12.9s
+[fold 0] Ep  26 | trn loss=0.0251 auc=1.000 | val loss=0.2043 auc=0.950 | 12.8s
+[fold 0] Ep  27 | trn loss=0.0406 auc=0.997 | val loss=0.2014 auc=0.952 | 12.6s
+[fold 0] Ep  28 | trn loss=0.0198 auc=1.000 | val loss=0.2064 auc=0.945 | 13.0s
+[fold 0] Ep  29 | trn loss=0.0188 auc=1.000 | val loss=0.2063 auc=0.945 | 12.7s
+[fold 0] Ep  30 | trn loss=0.0142 auc=1.000 | val loss=0.2053 auc=0.947 | 12.8s
+[fold 0] Ep  31 | trn loss=0.0147 auc=1.000 | val loss=0.2006 auc=0.947 | 14.7s
+[fold 0] Ep  32 | trn loss=0.0211 auc=1.000 | val loss=0.1994 auc=0.952 | 12.8s
+[fold 0] Ep  33 | trn loss=0.0120 auc=1.000 | val loss=0.2012 auc=0.952 | 13.4s
+[fold 0] Ep  34 | trn loss=0.0201 auc=1.000 | val loss=0.2007 auc=0.947 | 12.9s
+[fold 0] Ep  35 | trn loss=0.0112 auc=1.000 | val loss=0.2009 auc=0.954 | 13.0s
+[fold 0] Ep  36 | trn loss=0.0102 auc=1.000 | val loss=0.2017 auc=0.950 | 12.7s
+[fold 0] Ep  37 | trn loss=0.0166 auc=1.000 | val loss=0.1995 auc=0.950 | 13.0s
+[fold 0] Ep  38 | trn loss=0.0100 auc=1.000 | val loss=0.1997 auc=0.950 | 12.8s
+[fold 0] Ep  39 | trn loss=0.0122 auc=1.000 | val loss=0.2023 auc=0.950 | 13.0s
+[fold 0] Ep  40 | trn loss=0.0147 auc=1.000 | val loss=0.2113 auc=0.947 | 12.8s
+[fold 0] Ep  41 | trn loss=0.0122 auc=1.000 | val loss=0.2086 auc=0.947 | 13.0s
+[fold 0] Ep  42 | trn loss=0.0096 auc=1.000 | val loss=0.2054 auc=0.950 | 12.8s
+[fold 0] Ep  43 | trn loss=0.0138 auc=1.000 | val loss=0.2076 auc=0.950 | 13.0s
+[fold 0] Ep  44 | trn loss=0.0102 auc=1.000 | val loss=0.2026 auc=0.954 | 12.9s
+[fold 0] Ep  45 | trn loss=0.0155 auc=1.000 | val loss=0.2009 auc=0.952 | 13.0s
+[fold 0] Ep  46 | trn loss=0.0126 auc=1.000 | val loss=0.2067 auc=0.952 | 12.7s
+[fold 0] Ep  47 | trn loss=0.0138 auc=1.000 | val loss=0.2046 auc=0.950 | 12.9s
+[fold 0] Ep  48 | trn loss=0.0152 auc=1.000 | val loss=0.2076 auc=0.947 | 12.8s
+[fold 0] Ep  49 | trn loss=0.0123 auc=1.000 | val loss=0.2061 auc=0.950 | 12.8s
+[fold 0] Ep  50 | trn loss=0.0107 auc=1.000 | val loss=0.2098 auc=0.947 | 12.9s
+[fold 0] Ep  51 | trn loss=0.0110 auc=1.000 | val loss=0.2087 auc=0.950 | 12.7s
+[fold 0] Ep  52 | trn loss=0.0133 auc=1.000 | val loss=0.2116 auc=0.947 | 13.0s
+[fold 0] Ep  53 | trn loss=0.0133 auc=1.000 | val loss=0.2099 auc=0.952 | 12.7s
+[fold 0] Ep  54 | trn loss=0.0160 auc=1.000 | val loss=0.2066 auc=0.952 | 12.7s
+[fold 0] Ep  55 | trn loss=0.0297 auc=0.999 | val loss=0.2048 auc=0.950 | 12.9s
+[fold 0] Ep  56 | trn loss=0.0113 auc=1.000 | val loss=0.2002 auc=0.950 | 12.8s
+[fold 0] Ep  57 | trn loss=0.0119 auc=1.000 | val loss=0.2041 auc=0.952 | 12.7s
+[fold 0] Ep  58 | trn loss=0.0107 auc=1.000 | val loss=0.2061 auc=0.952 | 13.2s
+[fold 0] Ep  59 | trn loss=0.0105 auc=1.000 | val loss=0.2105 auc=0.952 | 12.7s
+[fold 0] Ep  60 | trn loss=0.0119 auc=1.000 | val loss=0.2042 auc=0.950 | 13.0s
+[fold 0] Ep  61 | trn loss=0.0116 auc=1.000 | val loss=0.2096 auc=0.952 | 12.7s
+[fold 0] Ep  62 | trn loss=0.0108 auc=1.000 | val loss=0.2119 auc=0.950 | 12.9s
+[fold 0] Ep  63 | trn loss=0.0188 auc=1.000 | val loss=0.2134 auc=0.950 | 12.9s
+[fold 0] Ep  64 | trn loss=0.0095 auc=1.000 | val loss=0.2122 auc=0.952 | 12.9s
+[fold 0] Ep  65 | trn loss=0.0111 auc=1.000 | val loss=0.2082 auc=0.950 | 12.8s
+[fold 0] Ep  66 | trn loss=0.0126 auc=1.000 | val loss=0.2058 auc=0.947 | 13.0s
+[fold 0] Ep  67 | trn loss=0.0107 auc=1.000 | val loss=0.2065 auc=0.950 | 12.9s
+[fold 0] Ep  68 | trn loss=0.0143 auc=1.000 | val loss=0.2057 auc=0.952 | 12.9s
+[fold 0] Ep  69 | trn loss=0.0123 auc=1.000 | val loss=0.2111 auc=0.947 | 12.8s
+[fold 0] Ep  70 | trn loss=0.0105 auc=1.000 | val loss=0.2080 auc=0.947 | 13.0s
+[fold 0] Ep  71 | trn loss=0.0107 auc=1.000 | val loss=0.2017 auc=0.950 | 12.8s
+[fold 0] Ep  72 | trn loss=0.0137 auc=1.000 | val loss=0.2023 auc=0.947 | 13.0s
+[fold 0] Ep  73 | trn loss=0.0098 auc=1.000 | val loss=0.2070 auc=0.947 | 12.9s
+[fold 0] Ep  74 | trn loss=0.0211 auc=1.000 | val loss=0.2121 auc=0.950 | 12.9s
+[fold 0] Ep  75 | trn loss=0.0114 auc=1.000 | val loss=0.2105 auc=0.950 | 13.2s
+[fold 0] Ep  76 | trn loss=0.0082 auc=1.000 | val loss=0.2092 auc=0.950 | 13.4s
+[fold 0] Ep  77 | trn loss=0.0107 auc=1.000 | val loss=0.2115 auc=0.947 | 12.9s
+[fold 0] Ep  78 | trn loss=0.0097 auc=1.000 | val loss=0.2124 auc=0.947 | 13.0s
+[fold 0] Ep  79 | trn loss=0.0104 auc=1.000 | val loss=0.2051 auc=0.950 | 13.0s
+[fold 0] Ep  80 | trn loss=0.0081 auc=1.000 | val loss=0.2106 auc=0.950 | 12.8s
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=13, PCOS=32)
+AUC-ROC      : 0.9688
+F1-score     : 0.9412
+Acuracia     : 0.9111
+Precisao     : 0.8889
+Sensibilidade: 1.0000 (recall PCOS)
+Especificidade: 0.6923 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)        9           4
+  Real 1 (P)        0          32
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=13, PCOS=32)
+AUC-ROC      : 0.9688
+F1-score     : 0.8966
+Acuracia     : 0.8667
+Precisao     : 1.0000
+Sensibilidade: 0.8125 (recall PCOS)
+Especificidade: 1.0000 (recall normal)
+Matriz de confusao (limiar 0.9106):
+               Predito 0   Predito 1
+  Real 0 (N)       13           0
+  Real 1 (P)        6          26
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.4810
+F1-score     : 0.5215
+Acuracia     : 0.3978
+Precisao     : 0.3850
+Sensibilidade: 0.8079 (recall PCOS)
+Especificidade: 0.1173 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      268        2016
+  Real 1 (P)      300        1262
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.4811
+F1-score     : 0.5241
+Acuracia     : 0.4000
+Precisao     : 0.3876
+Sensibilidade: 0.8090 (recall PCOS)
+Especificidade: 0.1177 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      266        1994
+  Real 1 (P)      298        1262
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.4810
+F1-score     : 0.3017
+Acuracia     : 0.5042
+Precisao     : 0.3524
+Sensibilidade: 0.2638 (recall PCOS)
+Especificidade: 0.6686 (recall normal)
+Matriz de confusao (limiar 0.9106):
+               Predito 0   Predito 1
+  Real 0 (N)     1527         757
+  Real 1 (P)     1150         412
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.4811
+F1-score     : 0.3026
+Acuracia     : 0.5029
+Precisao     : 0.3543
+Sensibilidade: 0.2641 (recall PCOS)
+Especificidade: 0.6677 (recall normal)
+Matriz de confusao (limiar 0.9106):
+               Predito 0   Predito 1
+  Real 0 (N)     1509         751
+  Real 1 (P)     1148         412
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.5430
+F1-score     : 0.6869
+Acuracia     : 0.5455
+Precisao     : 0.5692
+Sensibilidade: 0.8662 (recall PCOS)
+Especificidade: 0.1104 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      552        4448
+  Real 1 (P)      908        5876
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.5388
+F1-score     : 0.6861
+Acuracia     : 0.5445
+Precisao     : 0.5685
+Sensibilidade: 0.8649 (recall PCOS)
+Especificidade: 0.1103 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      544        4388
+  Real 1 (P)      903        5782
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.5430
+F1-score     : 0.3563
+Acuracia     : 0.4644
+Precisao     : 0.5783
+Sensibilidade: 0.2575 (recall PCOS)
+Especificidade: 0.7452 (recall normal)
+Matriz de confusao (limiar 0.9106):
+               Predito 0   Predito 1
+  Real 0 (N)     3726        1274
+  Real 1 (P)     5037        1747
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.5388
+F1-score     : 0.3487
+Acuracia     : 0.4605
+Precisao     : 0.5711
+Sensibilidade: 0.2510 (recall PCOS)
+Especificidade: 0.7445 (recall normal)
+Matriz de confusao (limiar 0.9106):
+               Predito 0   Predito 1
+  Real 0 (N)     3672        1260
+  Real 1 (P)     5007        1678
+
+===== Fold 1: treino 180 | validacao 45 =====
+[fold 1] Ep   0 | trn loss=0.3930 auc=0.389 | val loss=0.4018 auc=0.329 | antes do treino
+[fold 1] Ep   1 | trn loss=0.3883 auc=0.468 | val loss=0.3800 auc=0.666 | 12.5s
+[fold 1] Ep   2 | trn loss=0.3610 auc=0.758 | val loss=0.3657 auc=0.762 | 12.5s
+[fold 1] Ep   3 | trn loss=0.3428 auc=0.808 | val loss=0.3595 auc=0.755 | 12.4s
+[fold 1] Ep   4 | trn loss=0.3456 auc=0.765 | val loss=0.3408 auc=0.796 | 13.2s
+[fold 1] Ep   5 | trn loss=0.2975 auc=0.851 | val loss=0.3242 auc=0.798 | 12.9s
+[fold 1] Ep   6 | trn loss=0.2605 auc=0.902 | val loss=0.2975 auc=0.834 | 12.7s
+[fold 1] Ep   7 | trn loss=0.2320 auc=0.906 | val loss=0.2761 auc=0.880 | 13.0s
+[fold 1] Ep   8 | trn loss=0.2172 auc=0.923 | val loss=0.2608 auc=0.887 | 12.9s
+[fold 1] Ep   9 | trn loss=0.1895 auc=0.952 | val loss=0.2552 auc=0.887 | 13.0s
+[fold 1] Ep  10 | trn loss=0.1786 auc=0.950 | val loss=0.2390 auc=0.906 | 13.0s
+[fold 1] Ep  11 | trn loss=0.1667 auc=0.959 | val loss=0.2216 auc=0.909 | 12.9s
+[fold 1] Ep  12 | trn loss=0.1282 auc=0.980 | val loss=0.2537 auc=0.880 | 12.9s
+[fold 1] Ep  13 | trn loss=0.1170 auc=0.988 | val loss=0.2626 auc=0.889 | 13.2s
+[fold 1] Ep  14 | trn loss=0.1008 auc=0.991 | val loss=0.2676 auc=0.911 | 13.0s
+[fold 1] Ep  15 | trn loss=0.0750 auc=0.996 | val loss=0.2585 auc=0.918 | 12.9s
+[fold 1] Ep  16 | trn loss=0.0693 auc=0.995 | val loss=0.2462 auc=0.921 | 13.1s
+[fold 1] Ep  17 | trn loss=0.0495 auc=0.998 | val loss=0.2057 auc=0.935 | 13.3s
+[fold 1] Ep  18 | trn loss=0.0423 auc=0.999 | val loss=0.2178 auc=0.940 | 13.0s
+[fold 1] Ep  19 | trn loss=0.0340 auc=1.000 | val loss=0.2701 auc=0.916 | 13.0s
+[fold 1] Ep  20 | trn loss=0.0279 auc=1.000 | val loss=0.2876 auc=0.913 | 12.7s
+[fold 1] Ep  21 | trn loss=0.0227 auc=1.000 | val loss=0.2406 auc=0.947 | 12.9s
+[fold 1] Ep  22 | trn loss=0.0329 auc=0.995 | val loss=0.2537 auc=0.933 | 12.7s
+[fold 1] Ep  23 | trn loss=0.0183 auc=1.000 | val loss=0.2621 auc=0.930 | 13.0s
+[fold 1] Ep  24 | trn loss=0.0305 auc=0.999 | val loss=0.2364 auc=0.916 | 13.3s
+[fold 1] Ep  25 | trn loss=0.0175 auc=1.000 | val loss=0.2031 auc=0.945 | 12.7s
+[fold 1] Ep  26 | trn loss=0.0127 auc=1.000 | val loss=0.2324 auc=0.935 | 13.0s
+[fold 1] Ep  27 | trn loss=0.0164 auc=1.000 | val loss=0.2813 auc=0.901 | 12.9s
+[fold 1] Ep  28 | trn loss=0.0129 auc=1.000 | val loss=0.2802 auc=0.909 | 12.9s
+[fold 1] Ep  29 | trn loss=0.0096 auc=1.000 | val loss=0.2729 auc=0.911 | 12.9s
+[fold 1] Ep  30 | trn loss=0.0103 auc=1.000 | val loss=0.2496 auc=0.925 | 12.9s
+[fold 1] Ep  31 | trn loss=0.0073 auc=1.000 | val loss=0.2416 auc=0.925 | 12.8s
+[fold 1] Ep  32 | trn loss=0.0160 auc=1.000 | val loss=0.2944 auc=0.923 | 12.6s
+[fold 1] Ep  33 | trn loss=0.0057 auc=1.000 | val loss=0.3074 auc=0.923 | 13.0s
+[fold 1] Ep  34 | trn loss=0.0103 auc=1.000 | val loss=0.3268 auc=0.925 | 12.8s
+[fold 1] Ep  35 | trn loss=0.0087 auc=1.000 | val loss=0.3134 auc=0.925 | 13.0s
+[fold 1] Ep  36 | trn loss=0.0041 auc=1.000 | val loss=0.2953 auc=0.918 | 12.9s
+[fold 1] Ep  37 | trn loss=0.0063 auc=1.000 | val loss=0.2882 auc=0.923 | 12.9s
+[fold 1] Ep  38 | trn loss=0.0088 auc=1.000 | val loss=0.3099 auc=0.918 | 12.9s
+[fold 1] Ep  39 | trn loss=0.0048 auc=1.000 | val loss=0.3077 auc=0.923 | 12.9s
+[fold 1] Ep  40 | trn loss=0.0042 auc=1.000 | val loss=0.3101 auc=0.918 | 12.8s
+[fold 1] Ep  41 | trn loss=0.0060 auc=1.000 | val loss=0.3144 auc=0.923 | 13.0s
+[fold 1] Ep  42 | trn loss=0.0030 auc=1.000 | val loss=0.3199 auc=0.913 | 12.8s
+[fold 1] Ep  43 | trn loss=0.0113 auc=1.000 | val loss=0.3175 auc=0.921 | 13.0s
+[fold 1] Ep  44 | trn loss=0.0045 auc=1.000 | val loss=0.3161 auc=0.916 | 12.9s
+[fold 1] Ep  45 | trn loss=0.0048 auc=1.000 | val loss=0.3179 auc=0.918 | 13.1s
+[fold 1] Ep  46 | trn loss=0.0054 auc=1.000 | val loss=0.3125 auc=0.921 | 12.5s
+[fold 1] Ep  47 | trn loss=0.0056 auc=1.000 | val loss=0.3195 auc=0.921 | 12.7s
+[fold 1] Ep  48 | trn loss=0.0046 auc=1.000 | val loss=0.3153 auc=0.921 | 12.6s
+[fold 1] Ep  49 | trn loss=0.0040 auc=1.000 | val loss=0.3155 auc=0.918 | 12.7s
+[fold 1] Ep  50 | trn loss=0.0044 auc=1.000 | val loss=0.3145 auc=0.921 | 14.3s
+[fold 1] Ep  51 | trn loss=0.0043 auc=1.000 | val loss=0.3160 auc=0.921 | 14.6s
+[fold 1] Ep  52 | trn loss=0.0048 auc=1.000 | val loss=0.3173 auc=0.923 | 13.8s
+[fold 1] Ep  53 | trn loss=0.0047 auc=1.000 | val loss=0.3188 auc=0.923 | 13.7s
+[fold 1] Ep  54 | trn loss=0.0045 auc=1.000 | val loss=0.3181 auc=0.921 | 13.8s
+[fold 1] Ep  55 | trn loss=0.0045 auc=1.000 | val loss=0.3145 auc=0.918 | 14.0s
+[fold 1] Ep  56 | trn loss=0.0038 auc=1.000 | val loss=0.3148 auc=0.923 | 14.1s
+[fold 1] Ep  57 | trn loss=0.0076 auc=1.000 | val loss=0.3142 auc=0.923 | 13.5s
+[fold 1] Ep  58 | trn loss=0.0039 auc=1.000 | val loss=0.3127 auc=0.921 | 13.8s
+[fold 1] Ep  59 | trn loss=0.0028 auc=1.000 | val loss=0.3165 auc=0.918 | 13.7s
+[fold 1] Ep  60 | trn loss=0.0073 auc=1.000 | val loss=0.3270 auc=0.921 | 13.7s
+[fold 1] Ep  61 | trn loss=0.0033 auc=1.000 | val loss=0.3204 auc=0.921 | 13.8s
+[fold 1] Ep  62 | trn loss=0.0032 auc=1.000 | val loss=0.3177 auc=0.923 | 13.8s
+[fold 1] Ep  63 | trn loss=0.0102 auc=1.000 | val loss=0.3301 auc=0.921 | 13.6s
+[fold 1] Ep  64 | trn loss=0.0030 auc=1.000 | val loss=0.3230 auc=0.921 | 13.8s
+[fold 1] Ep  65 | trn loss=0.0036 auc=1.000 | val loss=0.3112 auc=0.925 | 13.8s
+[fold 1] Ep  66 | trn loss=0.0043 auc=1.000 | val loss=0.3086 auc=0.925 | 14.0s
+[fold 1] Ep  67 | trn loss=0.0038 auc=1.000 | val loss=0.3113 auc=0.923 | 14.0s
+[fold 1] Ep  68 | trn loss=0.0048 auc=1.000 | val loss=0.3148 auc=0.923 | 13.8s
+[fold 1] Ep  69 | trn loss=0.0044 auc=1.000 | val loss=0.3128 auc=0.923 | 13.5s
+[fold 1] Ep  70 | trn loss=0.0057 auc=1.000 | val loss=0.3184 auc=0.923 | 13.9s
+[fold 1] Ep  71 | trn loss=0.0030 auc=1.000 | val loss=0.3159 auc=0.921 | 14.0s
+[fold 1] Ep  72 | trn loss=0.0029 auc=1.000 | val loss=0.3177 auc=0.918 | 13.8s
+[fold 1] Ep  73 | trn loss=0.0040 auc=1.000 | val loss=0.3114 auc=0.921 | 13.6s
+[fold 1] Ep  74 | trn loss=0.0076 auc=1.000 | val loss=0.3144 auc=0.918 | 13.7s
+[fold 1] Ep  75 | trn loss=0.0024 auc=1.000 | val loss=0.3121 auc=0.921 | 13.8s
+[fold 1] Ep  76 | trn loss=0.0028 auc=1.000 | val loss=0.3194 auc=0.921 | 13.8s
+[fold 1] Ep  77 | trn loss=0.0028 auc=1.000 | val loss=0.3233 auc=0.918 | 13.9s
+[fold 1] Ep  78 | trn loss=0.0042 auc=1.000 | val loss=0.3245 auc=0.921 | 14.0s
+[fold 1] Ep  79 | trn loss=0.0033 auc=1.000 | val loss=0.3200 auc=0.918 | 13.6s
+[fold 1] Ep  80 | trn loss=0.0072 auc=1.000 | val loss=0.3152 auc=0.918 | 13.7s
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=13, PCOS=32)
+AUC-ROC      : 0.9471
+F1-score     : 0.9231
+Acuracia     : 0.8889
+Precisao     : 0.9091
+Sensibilidade: 0.9375 (recall PCOS)
+Especificidade: 0.7692 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)       10           3
+  Real 1 (P)        2          30
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=13, PCOS=32)
+AUC-ROC      : 0.9471
+F1-score     : 0.9206
+Acuracia     : 0.8889
+Precisao     : 0.9355
+Sensibilidade: 0.9062 (recall PCOS)
+Especificidade: 0.8462 (recall normal)
+Matriz de confusao (limiar 0.7793):
+               Predito 0   Predito 1
+  Real 0 (N)       11           2
+  Real 1 (P)        3          29
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.6641
+F1-score     : 0.6436
+Acuracia     : 0.5848
+Precisao     : 0.4940
+Sensibilidade: 0.9232 (recall PCOS)
+Especificidade: 0.3533 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      807        1477
+  Real 1 (P)      120        1442
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.6630
+F1-score     : 0.6465
+Acuracia     : 0.5877
+Precisao     : 0.4974
+Sensibilidade: 0.9231 (recall PCOS)
+Especificidade: 0.3562 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      805        1455
+  Real 1 (P)      120        1440
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.6641
+F1-score     : 0.6549
+Acuracia     : 0.6175
+Precisao     : 0.5168
+Sensibilidade: 0.8937 (recall PCOS)
+Especificidade: 0.4286 (recall normal)
+Matriz de confusao (limiar 0.7793):
+               Predito 0   Predito 1
+  Real 0 (N)      979        1305
+  Real 1 (P)      166        1396
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.6630
+F1-score     : 0.6568
+Acuracia     : 0.6186
+Precisao     : 0.5192
+Sensibilidade: 0.8936 (recall PCOS)
+Especificidade: 0.4288 (recall normal)
+Matriz de confusao (limiar 0.7793):
+               Predito 0   Predito 1
+  Real 0 (N)      969        1291
+  Real 1 (P)      166        1394
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.6986
+F1-score     : 0.7417
+Acuracia     : 0.6476
+Precisao     : 0.6416
+Sensibilidade: 0.8788 (recall PCOS)
+Especificidade: 0.3338 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)     1669        3331
+  Real 1 (P)      822        5962
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.6949
+F1-score     : 0.7415
+Acuracia     : 0.6479
+Precisao     : 0.6420
+Sensibilidade: 0.8775 (recall PCOS)
+Especificidade: 0.3368 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)     1661        3271
+  Real 1 (P)      819        5866
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.6986
+F1-score     : 0.7501
+Acuracia     : 0.6777
+Precisao     : 0.6775
+Sensibilidade: 0.8401 (recall PCOS)
+Especificidade: 0.4574 (recall normal)
+Matriz de confusao (limiar 0.7793):
+               Predito 0   Predito 1
+  Real 0 (N)     2287        2713
+  Real 1 (P)     1085        5699
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.6949
+F1-score     : 0.7492
+Acuracia     : 0.6769
+Precisao     : 0.6770
+Sensibilidade: 0.8386 (recall PCOS)
+Especificidade: 0.4576 (recall normal)
+Matriz de confusao (limiar 0.7793):
+               Predito 0   Predito 1
+  Real 0 (N)     2257        2675
+  Real 1 (P)     1079        5606
+
+===== Fold 2: treino 180 | validacao 45 =====
+[fold 2] Ep   0 | trn loss=0.3908 auc=0.430 | val loss=0.4103 auc=0.151 | antes do treino
+[fold 2] Ep   1 | trn loss=0.3920 auc=0.433 | val loss=0.3799 auc=0.661 | 13.2s
+[fold 2] Ep   2 | trn loss=0.3602 auc=0.746 | val loss=0.3652 auc=0.812 | 13.3s
+[fold 2] Ep   3 | trn loss=0.3457 auc=0.812 | val loss=0.3538 auc=0.853 | 13.4s
+[fold 2] Ep   4 | trn loss=0.3420 auc=0.810 | val loss=0.3452 auc=0.841 | 13.8s
+[fold 2] Ep   5 | trn loss=0.2922 auc=0.894 | val loss=0.3258 auc=0.841 | 14.0s
+[fold 2] Ep   6 | trn loss=0.2676 auc=0.900 | val loss=0.3027 auc=0.856 | 13.8s
+[fold 2] Ep   7 | trn loss=0.2381 auc=0.914 | val loss=0.2884 auc=0.856 | 13.7s
+[fold 2] Ep   8 | trn loss=0.2089 auc=0.933 | val loss=0.2922 auc=0.820 | 13.8s
+[fold 2] Ep   9 | trn loss=0.1815 auc=0.959 | val loss=0.2866 auc=0.817 | 13.8s
+[fold 2] Ep  10 | trn loss=0.1617 auc=0.965 | val loss=0.3089 auc=0.820 | 14.2s
+[fold 2] Ep  11 | trn loss=0.1517 auc=0.970 | val loss=0.3491 auc=0.834 | 14.2s
+[fold 2] Ep  12 | trn loss=0.1168 auc=0.983 | val loss=0.3855 auc=0.820 | 13.8s
+[fold 2] Ep  13 | trn loss=0.1011 auc=0.992 | val loss=0.3741 auc=0.825 | 14.1s
+[fold 2] Ep  14 | trn loss=0.0970 auc=0.990 | val loss=0.3593 auc=0.837 | 14.2s
+[fold 2] Ep  15 | trn loss=0.0718 auc=0.996 | val loss=0.3494 auc=0.841 | 14.1s
+[fold 2] Ep  16 | trn loss=0.0936 auc=0.989 | val loss=0.3266 auc=0.853 | 14.7s
+[fold 2] Ep  17 | trn loss=0.0612 auc=0.997 | val loss=0.3287 auc=0.856 | 13.9s
+[fold 2] Ep  18 | trn loss=0.0543 auc=0.998 | val loss=0.3289 auc=0.853 | 13.8s
+[fold 2] Ep  19 | trn loss=0.0502 auc=0.999 | val loss=0.3203 auc=0.863 | 13.8s
+[fold 2] Ep  20 | trn loss=0.0492 auc=0.999 | val loss=0.3168 auc=0.863 | 13.6s
+[fold 2] Ep  21 | trn loss=0.0437 auc=0.999 | val loss=0.3169 auc=0.858 | 13.8s
+[fold 2] Ep  22 | trn loss=0.0523 auc=0.997 | val loss=0.3115 auc=0.870 | 13.6s
+[fold 2] Ep  23 | trn loss=0.0516 auc=0.998 | val loss=0.3260 auc=0.868 | 13.8s
+[fold 2] Ep  24 | trn loss=0.0376 auc=1.000 | val loss=0.3430 auc=0.858 | 13.9s
+[fold 2] Ep  25 | trn loss=0.0302 auc=1.000 | val loss=0.3398 auc=0.858 | 13.7s
+[fold 2] Ep  26 | trn loss=0.0277 auc=1.000 | val loss=0.3378 auc=0.868 | 13.9s
+[fold 2] Ep  27 | trn loss=0.0416 auc=0.998 | val loss=0.3484 auc=0.853 | 14.0s
+[fold 2] Ep  28 | trn loss=0.0247 auc=1.000 | val loss=0.3492 auc=0.849 | 14.0s
+[fold 2] Ep  29 | trn loss=0.0302 auc=1.000 | val loss=0.3504 auc=0.851 | 14.0s
+[fold 2] Ep  30 | trn loss=0.0210 auc=1.000 | val loss=0.3546 auc=0.853 | 13.8s
+[fold 2] Ep  31 | trn loss=0.0220 auc=1.000 | val loss=0.3529 auc=0.851 | 13.6s
+[fold 2] Ep  32 | trn loss=0.0354 auc=0.999 | val loss=0.3583 auc=0.851 | 13.7s
+[fold 2] Ep  33 | trn loss=0.0198 auc=1.000 | val loss=0.3597 auc=0.853 | 13.5s
+[fold 2] Ep  34 | trn loss=0.0297 auc=1.000 | val loss=0.3600 auc=0.853 | 13.8s
+[fold 2] Ep  35 | trn loss=0.0178 auc=1.000 | val loss=0.3607 auc=0.851 | 13.7s
+[fold 2] Ep  36 | trn loss=0.0171 auc=1.000 | val loss=0.3613 auc=0.851 | 13.8s
+[fold 2] Ep  37 | trn loss=0.0203 auc=1.000 | val loss=0.3651 auc=0.853 | 13.8s
+[fold 2] Ep  38 | trn loss=0.0227 auc=1.000 | val loss=0.3639 auc=0.851 | 14.2s
+[fold 2] Ep  39 | trn loss=0.0222 auc=1.000 | val loss=0.3683 auc=0.846 | 13.9s
+[fold 2] Ep  40 | trn loss=0.0234 auc=1.000 | val loss=0.3683 auc=0.853 | 14.3s
+[fold 2] Ep  41 | trn loss=0.0201 auc=1.000 | val loss=0.3627 auc=0.849 | 13.6s
+[fold 2] Ep  42 | trn loss=0.0186 auc=1.000 | val loss=0.3624 auc=0.844 | 14.0s
+[fold 2] Ep  43 | trn loss=0.0224 auc=1.000 | val loss=0.3656 auc=0.846 | 14.6s
+[fold 2] Ep  44 | trn loss=0.0201 auc=1.000 | val loss=0.3652 auc=0.851 | 12.8s
+[fold 2] Ep  45 | trn loss=0.0192 auc=1.000 | val loss=0.3676 auc=0.851 | 12.9s
+[fold 2] Ep  46 | trn loss=0.0212 auc=1.000 | val loss=0.3706 auc=0.844 | 12.8s
+[fold 2] Ep  47 | trn loss=0.0292 auc=1.000 | val loss=0.3668 auc=0.844 | 12.7s
+[fold 2] Ep  48 | trn loss=0.0200 auc=1.000 | val loss=0.3711 auc=0.846 | 12.9s
+[fold 2] Ep  49 | trn loss=0.0177 auc=1.000 | val loss=0.3710 auc=0.849 | 12.8s
+[fold 2] Ep  50 | trn loss=0.0206 auc=1.000 | val loss=0.3660 auc=0.853 | 13.0s
+[fold 2] Ep  51 | trn loss=0.0176 auc=1.000 | val loss=0.3714 auc=0.853 | 12.8s
+[fold 2] Ep  52 | trn loss=0.0285 auc=0.999 | val loss=0.3680 auc=0.841 | 12.8s
+[fold 2] Ep  53 | trn loss=0.0242 auc=1.000 | val loss=0.3718 auc=0.853 | 13.0s
+[fold 2] Ep  54 | trn loss=0.0169 auc=1.000 | val loss=0.3723 auc=0.846 | 12.6s
+[fold 2] Ep  55 | trn loss=0.0226 auc=1.000 | val loss=0.3771 auc=0.853 | 13.0s
+[fold 2] Ep  56 | trn loss=0.0174 auc=1.000 | val loss=0.3744 auc=0.846 | 12.7s
+[fold 2] Ep  57 | trn loss=0.0241 auc=1.000 | val loss=0.3782 auc=0.851 | 13.1s
+[fold 2] Ep  58 | trn loss=0.0175 auc=1.000 | val loss=0.3770 auc=0.849 | 12.9s
+[fold 2] Ep  59 | trn loss=0.0141 auc=1.000 | val loss=0.3735 auc=0.851 | 13.1s
+[fold 2] Ep  60 | trn loss=0.0231 auc=1.000 | val loss=0.3736 auc=0.844 | 12.6s
+[fold 2] Ep  61 | trn loss=0.0165 auc=1.000 | val loss=0.3676 auc=0.849 | 13.0s
+[fold 2] Ep  62 | trn loss=0.0151 auc=1.000 | val loss=0.3698 auc=0.851 | 12.8s
+[fold 2] Ep  63 | trn loss=0.0252 auc=1.000 | val loss=0.3696 auc=0.851 | 12.8s
+[fold 2] Ep  64 | trn loss=0.0192 auc=1.000 | val loss=0.3680 auc=0.851 | 13.0s
+[fold 2] Ep  65 | trn loss=0.0151 auc=1.000 | val loss=0.3692 auc=0.849 | 12.7s
+[fold 2] Ep  66 | trn loss=0.0148 auc=1.000 | val loss=0.3719 auc=0.846 | 13.0s
+[fold 2] Ep  67 | trn loss=0.0166 auc=1.000 | val loss=0.3700 auc=0.846 | 13.0s
+[fold 2] Ep  68 | trn loss=0.0180 auc=1.000 | val loss=0.3691 auc=0.853 | 12.8s
+[fold 2] Ep  69 | trn loss=0.0188 auc=1.000 | val loss=0.3715 auc=0.846 | 12.9s
+[fold 2] Ep  70 | trn loss=0.0149 auc=1.000 | val loss=0.3677 auc=0.851 | 12.9s
+[fold 2] Ep  71 | trn loss=0.0163 auc=1.000 | val loss=0.3669 auc=0.853 | 12.8s
+[fold 2] Ep  72 | trn loss=0.0167 auc=1.000 | val loss=0.3727 auc=0.853 | 13.1s
+[fold 2] Ep  73 | trn loss=0.0164 auc=1.000 | val loss=0.3767 auc=0.853 | 13.1s
+[fold 2] Ep  74 | trn loss=0.0257 auc=1.000 | val loss=0.3748 auc=0.853 | 12.6s
+[fold 2] Ep  75 | trn loss=0.0143 auc=1.000 | val loss=0.3739 auc=0.849 | 13.0s
+[fold 2] Ep  76 | trn loss=0.0129 auc=1.000 | val loss=0.3744 auc=0.849 | 12.8s
+[fold 2] Ep  77 | trn loss=0.0174 auc=1.000 | val loss=0.3709 auc=0.846 | 13.1s
+[fold 2] Ep  78 | trn loss=0.0175 auc=1.000 | val loss=0.3714 auc=0.851 | 12.7s
+[fold 2] Ep  79 | trn loss=0.0142 auc=1.000 | val loss=0.3688 auc=0.858 | 12.7s
+[fold 2] Ep  80 | trn loss=0.0167 auc=1.000 | val loss=0.3735 auc=0.858 | 13.1s
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=13, PCOS=32)
+AUC-ROC      : 0.8702
+F1-score     : 0.9254
+Acuracia     : 0.8889
+Precisao     : 0.8857
+Sensibilidade: 0.9688 (recall PCOS)
+Especificidade: 0.6923 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)        9           4
+  Real 1 (P)        1          31
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=13, PCOS=32)
+AUC-ROC      : 0.8702
+F1-score     : 0.9062
+Acuracia     : 0.8667
+Precisao     : 0.9062
+Sensibilidade: 0.9062 (recall PCOS)
+Especificidade: 0.7692 (recall normal)
+Matriz de confusao (limiar 0.7221):
+               Predito 0   Predito 1
+  Real 0 (N)       10           3
+  Real 1 (P)        3          29
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.4123
+F1-score     : 0.5623
+Acuracia     : 0.4730
+Precisao     : 0.4242
+Sensibilidade: 0.8335 (recall PCOS)
+Especificidade: 0.2264 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      517        1767
+  Real 1 (P)      260        1302
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.4131
+F1-score     : 0.5652
+Acuracia     : 0.4757
+Precisao     : 0.4273
+Sensibilidade: 0.8346 (recall PCOS)
+Especificidade: 0.2279 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      515        1745
+  Real 1 (P)      258        1302
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.4123
+F1-score     : 0.5185
+Acuracia     : 0.4678
+Precisao     : 0.4098
+Sensibilidade: 0.7055 (recall PCOS)
+Especificidade: 0.3052 (recall normal)
+Matriz de confusao (limiar 0.7221):
+               Predito 0   Predito 1
+  Real 0 (N)      697        1587
+  Real 1 (P)      460        1102
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.4131
+F1-score     : 0.5214
+Acuracia     : 0.4704
+Precisao     : 0.4132
+Sensibilidade: 0.7064 (recall PCOS)
+Especificidade: 0.3075 (recall normal)
+Matriz de confusao (limiar 0.7221):
+               Predito 0   Predito 1
+  Real 0 (N)      695        1565
+  Real 1 (P)      458        1102
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.5101
+F1-score     : 0.6956
+Acuracia     : 0.5808
+Precisao     : 0.5976
+Sensibilidade: 0.8320 (recall PCOS)
+Especificidade: 0.2400 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)     1200        3800
+  Real 1 (P)     1140        5644
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.5065
+F1-score     : 0.6946
+Acuracia     : 0.5801
+Precisao     : 0.5973
+Sensibilidade: 0.8298 (recall PCOS)
+Especificidade: 0.2417 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)     1192        3740
+  Real 1 (P)     1138        5547
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.5101
+F1-score     : 0.6460
+Acuracia     : 0.5545
+Precisao     : 0.5953
+Sensibilidade: 0.7062 (recall PCOS)
+Especificidade: 0.3486 (recall normal)
+Matriz de confusao (limiar 0.7221):
+               Predito 0   Predito 1
+  Real 0 (N)     1743        3257
+  Real 1 (P)     1993        4791
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.5065
+F1-score     : 0.6449
+Acuracia     : 0.5542
+Precisao     : 0.5953
+Sensibilidade: 0.7035 (recall PCOS)
+Especificidade: 0.3518 (recall normal)
+Matriz de confusao (limiar 0.7221):
+               Predito 0   Predito 1
+  Real 0 (N)     1735        3197
+  Real 1 (P)     1982        4703
+
+===== Fold 3: treino 180 | validacao 45 =====
+[fold 3] Ep   0 | trn loss=0.4001 auc=0.405 | val loss=0.4023 auc=0.273 | antes do treino
+[fold 3] Ep   1 | trn loss=0.3984 auc=0.459 | val loss=0.3661 auc=0.838 | 12.4s
+[fold 3] Ep   2 | trn loss=0.3702 auc=0.733 | val loss=0.3466 auc=0.942 | 12.4s
+[fold 3] Ep   3 | trn loss=0.3539 auc=0.814 | val loss=0.3356 auc=0.927 | 12.5s
+[fold 3] Ep   4 | trn loss=0.3537 auc=0.788 | val loss=0.3162 auc=0.927 | 13.1s
+[fold 3] Ep   5 | trn loss=0.3096 auc=0.884 | val loss=0.2914 auc=0.924 | 13.0s
+[fold 3] Ep   6 | trn loss=0.2884 auc=0.872 | val loss=0.2659 auc=0.904 | 12.7s
+[fold 3] Ep   7 | trn loss=0.2612 auc=0.894 | val loss=0.2530 auc=0.889 | 12.8s
+[fold 3] Ep   8 | trn loss=0.2340 auc=0.916 | val loss=0.2394 auc=0.922 | 13.0s
+[fold 3] Ep   9 | trn loss=0.2113 auc=0.940 | val loss=0.2334 auc=0.932 | 13.0s
+[fold 3] Ep  10 | trn loss=0.2031 auc=0.938 | val loss=0.2224 auc=0.902 | 12.8s
+[fold 3] Ep  11 | trn loss=0.1838 auc=0.948 | val loss=0.2518 auc=0.907 | 12.8s
+[fold 3] Ep  12 | trn loss=0.1390 auc=0.981 | val loss=0.2480 auc=0.907 | 12.7s
+[fold 3] Ep  13 | trn loss=0.1305 auc=0.979 | val loss=0.2504 auc=0.917 | 12.8s
+[fold 3] Ep  14 | trn loss=0.1022 auc=0.988 | val loss=0.2372 auc=0.894 | 12.7s
+[fold 3] Ep  15 | trn loss=0.0820 auc=0.992 | val loss=0.2220 auc=0.899 | 12.8s
+[fold 3] Ep  16 | trn loss=0.0898 auc=0.991 | val loss=0.1900 auc=0.909 | 13.1s
+[fold 3] Ep  17 | trn loss=0.0576 auc=0.997 | val loss=0.2057 auc=0.914 | 12.8s
+[fold 3] Ep  18 | trn loss=0.0500 auc=0.999 | val loss=0.1952 auc=0.919 | 12.8s
+[fold 3] Ep  19 | trn loss=0.0557 auc=0.998 | val loss=0.1883 auc=0.922 | 12.9s
+[fold 3] Ep  20 | trn loss=0.0411 auc=1.000 | val loss=0.1970 auc=0.917 | 13.0s
+[fold 3] Ep  21 | trn loss=0.0394 auc=0.999 | val loss=0.1932 auc=0.917 | 13.0s
+[fold 3] Ep  22 | trn loss=0.0403 auc=1.000 | val loss=0.1862 auc=0.919 | 12.6s
+[fold 3] Ep  23 | trn loss=0.0401 auc=0.999 | val loss=0.1821 auc=0.924 | 12.8s
+[fold 3] Ep  24 | trn loss=0.0291 auc=1.000 | val loss=0.1828 auc=0.927 | 13.0s
+[fold 3] Ep  25 | trn loss=0.0192 auc=1.000 | val loss=0.1805 auc=0.927 | 12.9s
+[fold 3] Ep  26 | trn loss=0.0199 auc=1.000 | val loss=0.1837 auc=0.927 | 13.1s
+[fold 3] Ep  27 | trn loss=0.0344 auc=0.998 | val loss=0.1966 auc=0.924 | 12.5s
+[fold 3] Ep  28 | trn loss=0.0233 auc=1.000 | val loss=0.1983 auc=0.922 | 12.6s
+[fold 3] Ep  29 | trn loss=0.0239 auc=1.000 | val loss=0.2095 auc=0.917 | 12.7s
+[fold 3] Ep  30 | trn loss=0.0165 auc=1.000 | val loss=0.2079 auc=0.919 | 12.7s
+[fold 3] Ep  31 | trn loss=0.0140 auc=1.000 | val loss=0.2043 auc=0.922 | 13.0s
+[fold 3] Ep  32 | trn loss=0.0204 auc=1.000 | val loss=0.2031 auc=0.919 | 12.9s
+[fold 3] Ep  33 | trn loss=0.0155 auc=1.000 | val loss=0.2106 auc=0.919 | 12.9s
+[fold 3] Ep  34 | trn loss=0.0225 auc=1.000 | val loss=0.2040 auc=0.919 | 12.8s
+[fold 3] Ep  35 | trn loss=0.0114 auc=1.000 | val loss=0.2046 auc=0.919 | 12.8s
+[fold 3] Ep  36 | trn loss=0.0139 auc=1.000 | val loss=0.2045 auc=0.922 | 12.8s
+[fold 3] Ep  37 | trn loss=0.0152 auc=1.000 | val loss=0.2061 auc=0.914 | 12.8s
+[fold 3] Ep  38 | trn loss=0.0161 auc=1.000 | val loss=0.2012 auc=0.919 | 12.7s
+[fold 3] Ep  39 | trn loss=0.0175 auc=1.000 | val loss=0.2015 auc=0.919 | 12.9s
+[fold 3] Ep  40 | trn loss=0.0181 auc=1.000 | val loss=0.2023 auc=0.919 | 12.9s
+[fold 3] Ep  41 | trn loss=0.0167 auc=1.000 | val loss=0.2016 auc=0.917 | 12.8s
+[fold 3] Ep  42 | trn loss=0.0144 auc=1.000 | val loss=0.2018 auc=0.919 | 12.9s
+[fold 3] Ep  43 | trn loss=0.0133 auc=1.000 | val loss=0.2082 auc=0.919 | 12.7s
+[fold 3] Ep  44 | trn loss=0.0152 auc=1.000 | val loss=0.2101 auc=0.917 | 13.1s
+[fold 3] Ep  45 | trn loss=0.0148 auc=1.000 | val loss=0.2022 auc=0.922 | 12.6s
+[fold 3] Ep  46 | trn loss=0.0149 auc=1.000 | val loss=0.2088 auc=0.917 | 12.8s
+[fold 3] Ep  47 | trn loss=0.0239 auc=1.000 | val loss=0.2054 auc=0.919 | 12.8s
+[fold 3] Ep  48 | trn loss=0.0161 auc=1.000 | val loss=0.2003 auc=0.922 | 12.9s
+[fold 3] Ep  49 | trn loss=0.0134 auc=1.000 | val loss=0.2028 auc=0.917 | 12.8s
+[fold 3] Ep  50 | trn loss=0.0129 auc=1.000 | val loss=0.2093 auc=0.919 | 13.0s
+[fold 3] Ep  51 | trn loss=0.0131 auc=1.000 | val loss=0.2105 auc=0.919 | 13.1s
+[fold 3] Ep  52 | trn loss=0.0226 auc=0.999 | val loss=0.2077 auc=0.919 | 12.9s
+[fold 3] Ep  53 | trn loss=0.0203 auc=1.000 | val loss=0.2087 auc=0.919 | 12.9s
+[fold 3] Ep  54 | trn loss=0.0115 auc=1.000 | val loss=0.2067 auc=0.919 | 12.9s
+[fold 3] Ep  55 | trn loss=0.0204 auc=1.000 | val loss=0.2040 auc=0.922 | 13.0s
+[fold 3] Ep  56 | trn loss=0.0122 auc=1.000 | val loss=0.2075 auc=0.917 | 12.7s
+[fold 3] Ep  57 | trn loss=0.0121 auc=1.000 | val loss=0.2100 auc=0.917 | 13.0s
+[fold 3] Ep  58 | trn loss=0.0126 auc=1.000 | val loss=0.2125 auc=0.912 | 12.8s
+[fold 3] Ep  59 | trn loss=0.0092 auc=1.000 | val loss=0.2098 auc=0.917 | 12.5s
+[fold 3] Ep  60 | trn loss=0.0261 auc=1.000 | val loss=0.2065 auc=0.919 | 12.6s
+[fold 3] Ep  61 | trn loss=0.0169 auc=1.000 | val loss=0.2144 auc=0.917 | 12.6s
+[fold 3] Ep  62 | trn loss=0.0116 auc=1.000 | val loss=0.2129 auc=0.914 | 12.7s
+[fold 3] Ep  63 | trn loss=0.0207 auc=1.000 | val loss=0.2112 auc=0.917 | 12.8s
+[fold 3] Ep  64 | trn loss=0.0125 auc=1.000 | val loss=0.2093 auc=0.919 | 12.8s
+[fold 3] Ep  65 | trn loss=0.0102 auc=1.000 | val loss=0.2072 auc=0.917 | 12.6s
+[fold 3] Ep  66 | trn loss=0.0113 auc=1.000 | val loss=0.2047 auc=0.919 | 12.7s
+[fold 3] Ep  67 | trn loss=0.0117 auc=1.000 | val loss=0.2024 auc=0.922 | 12.7s
+[fold 3] Ep  68 | trn loss=0.0151 auc=1.000 | val loss=0.2047 auc=0.922 | 13.0s
+[fold 3] Ep  69 | trn loss=0.0128 auc=1.000 | val loss=0.2049 auc=0.919 | 12.7s
+[fold 3] Ep  70 | trn loss=0.0121 auc=1.000 | val loss=0.2022 auc=0.924 | 12.7s
+[fold 3] Ep  71 | trn loss=0.0107 auc=1.000 | val loss=0.2071 auc=0.914 | 12.9s
+[fold 3] Ep  72 | trn loss=0.0114 auc=1.000 | val loss=0.2077 auc=0.917 | 13.0s
+[fold 3] Ep  73 | trn loss=0.0119 auc=1.000 | val loss=0.2017 auc=0.929 | 12.8s
+[fold 3] Ep  74 | trn loss=0.0197 auc=1.000 | val loss=0.2131 auc=0.914 | 12.9s
+[fold 3] Ep  75 | trn loss=0.0120 auc=1.000 | val loss=0.2182 auc=0.912 | 12.6s
+[fold 3] Ep  76 | trn loss=0.0082 auc=1.000 | val loss=0.2171 auc=0.914 | 12.6s
+[fold 3] Ep  77 | trn loss=0.0112 auc=1.000 | val loss=0.2178 auc=0.914 | 12.7s
+[fold 3] Ep  78 | trn loss=0.0129 auc=1.000 | val loss=0.2183 auc=0.917 | 12.9s
+[fold 3] Ep  79 | trn loss=0.0192 auc=1.000 | val loss=0.2129 auc=0.917 | 13.1s
+[fold 3] Ep  80 | trn loss=0.0142 auc=1.000 | val loss=0.2096 auc=0.922 | 14.8s
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=12, PCOS=33)
+AUC-ROC      : 0.9419
+F1-score     : 0.8800
+Acuracia     : 0.8000
+Precisao     : 0.7857
+Sensibilidade: 1.0000 (recall PCOS)
+Especificidade: 0.2500 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)        3           9
+  Real 1 (P)        0          33
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=12, PCOS=33)
+AUC-ROC      : 0.9419
+F1-score     : 0.9552
+Acuracia     : 0.9333
+Precisao     : 0.9412
+Sensibilidade: 0.9697 (recall PCOS)
+Especificidade: 0.8333 (recall normal)
+Matriz de confusao (limiar 0.5415):
+               Predito 0   Predito 1
+  Real 0 (N)       10           2
+  Real 1 (P)        1          32
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.7370
+F1-score     : 0.5878
+Acuracia     : 0.4347
+Precisao     : 0.4176
+Sensibilidade: 0.9923 (recall PCOS)
+Especificidade: 0.0534 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      122        2162
+  Real 1 (P)       12        1550
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.7366
+F1-score     : 0.5902
+Acuracia     : 0.4372
+Precisao     : 0.4200
+Sensibilidade: 0.9923 (recall PCOS)
+Especificidade: 0.0540 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      122        2138
+  Real 1 (P)       12        1548
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.7370
+F1-score     : 0.6344
+Acuracia     : 0.6248
+Precisao     : 0.5249
+Sensibilidade: 0.8015 (recall PCOS)
+Especificidade: 0.5039 (recall normal)
+Matriz de confusao (limiar 0.5415):
+               Predito 0   Predito 1
+  Real 0 (N)     1151        1133
+  Real 1 (P)      310        1252
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.7366
+F1-score     : 0.6356
+Acuracia     : 0.6249
+Precisao     : 0.5268
+Sensibilidade: 0.8013 (recall PCOS)
+Especificidade: 0.5031 (recall normal)
+Matriz de confusao (limiar 0.5415):
+               Predito 0   Predito 1
+  Real 0 (N)     1137        1123
+  Real 1 (P)      310        1250
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.6520
+F1-score     : 0.7128
+Acuracia     : 0.5614
+Precisao     : 0.5720
+Sensibilidade: 0.9456 (recall PCOS)
+Especificidade: 0.0400 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      200        4800
+  Real 1 (P)      369        6415
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.6498
+F1-score     : 0.7128
+Acuracia     : 0.5614
+Precisao     : 0.5719
+Sensibilidade: 0.9457 (recall PCOS)
+Especificidade: 0.0406 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      200        4732
+  Real 1 (P)      363        6322
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.6520
+F1-score     : 0.6922
+Acuracia     : 0.6258
+Precisao     : 0.6574
+Sensibilidade: 0.7308 (recall PCOS)
+Especificidade: 0.4832 (recall normal)
+Matriz de confusao (limiar 0.5415):
+               Predito 0   Predito 1
+  Real 0 (N)     2416        2584
+  Real 1 (P)     1826        4958
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.6498
+F1-score     : 0.6906
+Acuracia     : 0.6238
+Precisao     : 0.6556
+Sensibilidade: 0.7295 (recall PCOS)
+Especificidade: 0.4805 (recall normal)
+Matriz de confusao (limiar 0.5415):
+               Predito 0   Predito 1
+  Real 0 (N)     2370        2562
+  Real 1 (P)     1808        4877
+
+===== Fold 4: treino 180 | validacao 45 =====
+[fold 4] Ep   0 | trn loss=0.4034 auc=0.347 | val loss=0.3892 auc=0.525 | antes do treino
+[fold 4] Ep   1 | trn loss=0.3975 auc=0.493 | val loss=0.3739 auc=0.662 | 11.9s
+[fold 4] Ep   2 | trn loss=0.3580 auc=0.815 | val loss=0.3768 auc=0.639 | 12.2s
+[fold 4] Ep   3 | trn loss=0.3474 auc=0.838 | val loss=0.3702 auc=0.672 | 12.0s
+[fold 4] Ep   4 | trn loss=0.3341 auc=0.834 | val loss=0.3617 auc=0.694 | 12.7s
+[fold 4] Ep   5 | trn loss=0.2871 auc=0.903 | val loss=0.3581 auc=0.692 | 12.6s
+[fold 4] Ep   6 | trn loss=0.2494 auc=0.923 | val loss=0.3497 auc=0.727 | 12.5s
+[fold 4] Ep   7 | trn loss=0.2274 auc=0.921 | val loss=0.3560 auc=0.694 | 12.5s
+[fold 4] Ep   8 | trn loss=0.1933 auc=0.944 | val loss=0.3337 auc=0.755 | 12.5s
+[fold 4] Ep   9 | trn loss=0.1706 auc=0.961 | val loss=0.3737 auc=0.760 | 12.5s
+[fold 4] Ep  10 | trn loss=0.1600 auc=0.960 | val loss=0.4183 auc=0.705 | 12.6s
+[fold 4] Ep  11 | trn loss=0.1417 auc=0.974 | val loss=0.4328 auc=0.682 | 12.5s
+[fold 4] Ep  12 | trn loss=0.1119 auc=0.986 | val loss=0.4275 auc=0.737 | 12.6s
+[fold 4] Ep  13 | trn loss=0.0993 auc=0.991 | val loss=0.4155 auc=0.758 | 12.7s
+[fold 4] Ep  14 | trn loss=0.0900 auc=0.990 | val loss=0.4539 auc=0.770 | 12.6s
+[fold 4] Ep  15 | trn loss=0.0648 auc=0.994 | val loss=0.4526 auc=0.793 | 12.6s
+[fold 4] Ep  16 | trn loss=0.0624 auc=0.995 | val loss=0.4335 auc=0.780 | 12.7s
+[fold 4] Ep  17 | trn loss=0.0512 auc=0.998 | val loss=0.4264 auc=0.798 | 12.6s
+[fold 4] Ep  18 | trn loss=0.0389 auc=0.999 | val loss=0.4462 auc=0.806 | 12.7s
+[fold 4] Ep  19 | trn loss=0.0430 auc=0.998 | val loss=0.4354 auc=0.816 | 12.7s
+[fold 4] Ep  20 | trn loss=0.0265 auc=1.000 | val loss=0.4259 auc=0.806 | 13.1s
+[fold 4] Ep  21 | trn loss=0.0257 auc=1.000 | val loss=0.4075 auc=0.811 | 12.8s
+[fold 4] Ep  22 | trn loss=0.0246 auc=1.000 | val loss=0.5155 auc=0.785 | 12.6s
+[fold 4] Ep  23 | trn loss=0.0290 auc=0.997 | val loss=0.4968 auc=0.793 | 12.9s
+[fold 4] Ep  24 | trn loss=0.0163 auc=1.000 | val loss=0.4453 auc=0.795 | 12.7s
+[fold 4] Ep  25 | trn loss=0.0106 auc=1.000 | val loss=0.4903 auc=0.783 | 12.9s
+[fold 4] Ep  26 | trn loss=0.0158 auc=1.000 | val loss=0.5140 auc=0.768 | 12.9s
+[fold 4] Ep  27 | trn loss=0.0264 auc=1.000 | val loss=0.5614 auc=0.765 | 13.0s
+[fold 4] Ep  28 | trn loss=0.0183 auc=1.000 | val loss=0.5175 auc=0.780 | 12.7s
+[fold 4] Ep  29 | trn loss=0.0122 auc=1.000 | val loss=0.4402 auc=0.798 | 12.6s
+[fold 4] Ep  30 | trn loss=0.0137 auc=1.000 | val loss=0.4291 auc=0.793 | 12.6s
+[fold 4] Ep  31 | trn loss=0.0107 auc=1.000 | val loss=0.4089 auc=0.795 | 13.0s
+[fold 4] Ep  32 | trn loss=0.0073 auc=1.000 | val loss=0.4052 auc=0.795 | 13.9s
+[fold 4] Ep  33 | trn loss=0.0068 auc=1.000 | val loss=0.4129 auc=0.798 | 12.8s
+[fold 4] Ep  34 | trn loss=0.0113 auc=1.000 | val loss=0.4103 auc=0.808 | 12.4s
+[fold 4] Ep  35 | trn loss=0.0040 auc=1.000 | val loss=0.4090 auc=0.801 | 12.5s
+[fold 4] Ep  36 | trn loss=0.0092 auc=1.000 | val loss=0.4211 auc=0.798 | 12.7s
+[fold 4] Ep  37 | trn loss=0.0084 auc=1.000 | val loss=0.4424 auc=0.801 | 12.6s
+[fold 4] Ep  38 | trn loss=0.0060 auc=1.000 | val loss=0.4586 auc=0.798 | 12.6s
+[fold 4] Ep  39 | trn loss=0.0059 auc=1.000 | val loss=0.4564 auc=0.798 | 12.7s
+[fold 4] Ep  40 | trn loss=0.0058 auc=1.000 | val loss=0.4579 auc=0.798 | 12.4s
+[fold 4] Ep  41 | trn loss=0.0062 auc=1.000 | val loss=0.4476 auc=0.798 | 12.5s
+[fold 4] Ep  42 | trn loss=0.0036 auc=1.000 | val loss=0.4449 auc=0.793 | 12.9s
+[fold 4] Ep  43 | trn loss=0.0062 auc=1.000 | val loss=0.4477 auc=0.795 | 12.6s
+[fold 4] Ep  44 | trn loss=0.0038 auc=1.000 | val loss=0.4433 auc=0.801 | 12.5s
+[fold 4] Ep  45 | trn loss=0.0040 auc=1.000 | val loss=0.4504 auc=0.795 | 12.5s
+[fold 4] Ep  46 | trn loss=0.0044 auc=1.000 | val loss=0.4499 auc=0.803 | 12.4s
+[fold 4] Ep  47 | trn loss=0.0107 auc=1.000 | val loss=0.4550 auc=0.798 | 12.7s
+[fold 4] Ep  48 | trn loss=0.0059 auc=1.000 | val loss=0.4551 auc=0.801 | 12.6s
+[fold 4] Ep  49 | trn loss=0.0045 auc=1.000 | val loss=0.4549 auc=0.795 | 12.5s
+[fold 4] Ep  50 | trn loss=0.0043 auc=1.000 | val loss=0.4538 auc=0.795 | 12.7s
+[fold 4] Ep  51 | trn loss=0.0043 auc=1.000 | val loss=0.4521 auc=0.801 | 12.8s
+[fold 4] Ep  52 | trn loss=0.0053 auc=1.000 | val loss=0.4483 auc=0.801 | 12.9s
+[fold 4] Ep  53 | trn loss=0.0048 auc=1.000 | val loss=0.4507 auc=0.801 | 12.7s
+[fold 4] Ep  54 | trn loss=0.0046 auc=1.000 | val loss=0.4529 auc=0.795 | 12.5s
+[fold 4] Ep  55 | trn loss=0.0067 auc=1.000 | val loss=0.4531 auc=0.801 | 12.7s
+[fold 4] Ep  56 | trn loss=0.0042 auc=1.000 | val loss=0.4443 auc=0.806 | 12.7s
+[fold 4] Ep  57 | trn loss=0.0042 auc=1.000 | val loss=0.4473 auc=0.806 | 12.6s
+[fold 4] Ep  58 | trn loss=0.0041 auc=1.000 | val loss=0.4453 auc=0.795 | 12.5s
+[fold 4] Ep  59 | trn loss=0.0055 auc=1.000 | val loss=0.4492 auc=0.798 | 12.5s
+[fold 4] Ep  60 | trn loss=0.0048 auc=1.000 | val loss=0.4539 auc=0.798 | 12.7s
+[fold 4] Ep  61 | trn loss=0.0036 auc=1.000 | val loss=0.4527 auc=0.801 | 12.5s
+[fold 4] Ep  62 | trn loss=0.0029 auc=1.000 | val loss=0.4544 auc=0.795 | 12.7s
+[fold 4] Ep  63 | trn loss=0.0060 auc=1.000 | val loss=0.4591 auc=0.803 | 12.6s
+[fold 4] Ep  64 | trn loss=0.0038 auc=1.000 | val loss=0.4510 auc=0.798 | 12.6s
+[fold 4] Ep  65 | trn loss=0.0034 auc=1.000 | val loss=0.4507 auc=0.798 | 12.5s
+[fold 4] Ep  66 | trn loss=0.0032 auc=1.000 | val loss=0.4557 auc=0.790 | 12.7s
+[fold 4] Ep  67 | trn loss=0.0030 auc=1.000 | val loss=0.4495 auc=0.795 | 12.6s
+[fold 4] Ep  68 | trn loss=0.0045 auc=1.000 | val loss=0.4507 auc=0.793 | 12.8s
+[fold 4] Ep  69 | trn loss=0.0037 auc=1.000 | val loss=0.4489 auc=0.795 | 12.5s
+[fold 4] Ep  70 | trn loss=0.0056 auc=1.000 | val loss=0.4551 auc=0.798 | 12.5s
+[fold 4] Ep  71 | trn loss=0.0045 auc=1.000 | val loss=0.4434 auc=0.801 | 12.6s
+[fold 4] Ep  72 | trn loss=0.0072 auc=1.000 | val loss=0.4477 auc=0.801 | 12.6s
+[fold 4] Ep  73 | trn loss=0.0037 auc=1.000 | val loss=0.4522 auc=0.798 | 12.5s
+[fold 4] Ep  74 | trn loss=0.0096 auc=1.000 | val loss=0.4528 auc=0.798 | 12.9s
+[fold 4] Ep  75 | trn loss=0.0025 auc=1.000 | val loss=0.4462 auc=0.798 | 12.5s
+[fold 4] Ep  76 | trn loss=0.0025 auc=1.000 | val loss=0.4462 auc=0.803 | 12.6s
+[fold 4] Ep  77 | trn loss=0.0029 auc=1.000 | val loss=0.4505 auc=0.801 | 12.5s
+[fold 4] Ep  78 | trn loss=0.0031 auc=1.000 | val loss=0.4505 auc=0.798 | 12.5s
+[fold 4] Ep  79 | trn loss=0.0033 auc=1.000 | val loss=0.4519 auc=0.798 | 13.1s
+[fold 4] Ep  80 | trn loss=0.0031 auc=1.000 | val loss=0.4494 auc=0.801 | 12.9s
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=12, PCOS=33)
+AUC-ROC      : 0.8157
+F1-score     : 0.8485
+Acuracia     : 0.7778
+Precisao     : 0.8485
+Sensibilidade: 0.8485 (recall PCOS)
+Especificidade: 0.5833 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)        7           5
+  Real 1 (P)        5          28
+
+============================================================
+  Validacao do fold (interno) [todas]
+============================================================
+Amostras: 45 (normal=12, PCOS=33)
+AUC-ROC      : 0.8157
+F1-score     : 0.8136
+Acuracia     : 0.7556
+Precisao     : 0.9231
+Sensibilidade: 0.7273 (recall PCOS)
+Especificidade: 0.8333 (recall normal)
+Matriz de confusao (limiar 0.9094):
+               Predito 0   Predito 1
+  Real 0 (N)       10           2
+  Real 1 (P)        9          24
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.4679
+F1-score     : 0.4690
+Acuracia     : 0.3146
+Precisao     : 0.3422
+Sensibilidade: 0.7452 (recall PCOS)
+Especificidade: 0.0201 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)       46        2238
+  Real 1 (P)      398        1164
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.4678
+F1-score     : 0.4713
+Acuracia     : 0.3162
+Precisao     : 0.3444
+Sensibilidade: 0.7462 (recall PCOS)
+Especificidade: 0.0195 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)       44        2216
+  Real 1 (P)      396        1164
+
+============================================================
+  Kaggle [todas]
+============================================================
+Amostras: 3846 (normal=2284, PCOS=1562)
+AUC-ROC      : 0.4679
+F1-score     : 0.4484
+Acuracia     : 0.4243
+Precisao     : 0.3670
+Sensibilidade: 0.5762 (recall PCOS)
+Especificidade: 0.3205 (recall normal)
+Matriz de confusao (limiar 0.9094):
+               Predito 0   Predito 1
+  Real 0 (N)      732        1552
+  Real 1 (P)      662         900
+
+============================================================
+  Kaggle [sem duplicatas da base]
+============================================================
+Amostras: 3820 (normal=2260, PCOS=1560)
+AUC-ROC      : 0.4678
+F1-score     : 0.4500
+Acuracia     : 0.4241
+Precisao     : 0.3689
+Sensibilidade: 0.5769 (recall PCOS)
+Especificidade: 0.3186 (recall normal)
+Matriz de confusao (limiar 0.9094):
+               Predito 0   Predito 1
+  Real 0 (N)      720        1540
+  Real 1 (P)      660         900
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.5475
+F1-score     : 0.6440
+Acuracia     : 0.4848
+Precisao     : 0.5347
+Sensibilidade: 0.8096 (recall PCOS)
+Especificidade: 0.0442 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      221        4779
+  Real 1 (P)     1292        5492
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.5436
+F1-score     : 0.6427
+Acuracia     : 0.4833
+Precisao     : 0.5337
+Sensibilidade: 0.8076 (recall PCOS)
+Especificidade: 0.0436 (recall normal)
+Matriz de confusao (limiar 0.5000):
+               Predito 0   Predito 1
+  Real 0 (N)      215        4717
+  Real 1 (P)     1286        5399
+
+============================================================
+  Figshare [todas]
+============================================================
+Amostras: 11784 (normal=5000, PCOS=6784)
+AUC-ROC      : 0.5475
+F1-score     : 0.6081
+Acuracia     : 0.5529
+Precisao     : 0.6137
+Sensibilidade: 0.6026 (recall PCOS)
+Especificidade: 0.4854 (recall normal)
+Matriz de confusao (limiar 0.9094):
+               Predito 0   Predito 1
+  Real 0 (N)     2427        2573
+  Real 1 (P)     2696        4088
+
+============================================================
+  Figshare [sem duplicatas da base]
+============================================================
+Amostras: 11617 (normal=4932, PCOS=6685)
+AUC-ROC      : 0.5436
+F1-score     : 0.6050
+Acuracia     : 0.5501
+Precisao     : 0.6115
+Sensibilidade: 0.5987 (recall PCOS)
+Especificidade: 0.4844 (recall normal)
+Matriz de confusao (limiar 0.9094):
+               Predito 0   Predito 1
+  Real 0 (N)     2389        2543
+  Real 1 (P)     2683        4002
+
+                                                                       auc_roc_mean  auc_roc_std  accuracy_mean  accuracy_std  sensitivity_mean  sensitivity_std  specificity_mean  specificity_std  f1_score_mean  f1_score_std  precision_mean  precision_std
+dataset                     subconjunto            limiar_tipo                                                                                                                                                                                                 
+Validacao do fold (interno) todas                  0,5                        0.909        0.064          0.853         0.060             0.951            0.063             0.597            0.205          0.904         0.038           0.864          0.049
+                                                   Youden (validacao)         0.909        0.064          0.862         0.066             0.864            0.095             0.856            0.086          0.898         0.052           0.941          0.035
+Kaggle                      todas                  0,5                        0.552        0.140          0.441         0.099             0.860            0.098             0.154            0.136          0.557         0.066           0.413          0.056
+Kaggle sem duplicatas       sem duplicatas da base 0,5                        0.552        0.139          0.443         0.100             0.861            0.097             0.155            0.138          0.559         0.066           0.415          0.056
+Kaggle                      todas                  Youden (validacao)         0.552        0.140          0.528         0.090             0.648            0.245             0.445            0.149          0.512         0.145           0.434          0.082
+Kaggle sem duplicatas       sem duplicatas da base Youden (validacao)         0.552        0.139          0.528         0.090             0.648            0.245             0.445            0.148          0.513         0.145           0.436          0.082
+Figshare                    todas                  0,5                        0.590        0.081          0.564         0.059             0.866            0.052             0.154            0.129          0.696         0.036           0.583          0.040
+Figshare sem duplicatas     sem duplicatas da base 0,5                        0.587        0.081          0.563         0.060             0.865            0.053             0.155            0.130          0.696         0.036           0.583          0.040
+Figshare                    todas                  Youden (validacao)         0.590        0.081          0.575         0.081             0.627            0.223             0.504            0.146          0.611         0.152           0.624          0.042
+Figshare sem duplicatas     sem duplicatas da base Youden (validacao)         0.587        0.081          0.573         0.082             0.624            0.225             0.504            0.145          0.608         0.154           0.622          0.043
+
+Concluido: G:\tcc\outputs\experimentos\dedup_pelvinext_cv_80ep_sem_es_20261116_205856
